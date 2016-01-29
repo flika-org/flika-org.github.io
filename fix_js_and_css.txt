@@ -1,0 +1,2 @@
+find /home/brettjsettle/flika/flika/templates/* -type f -print0 | xargs -0 sed -i 's/"_static\/\(.*\.js\)/"static\/js\/\1/g'
+find /home/brettjsettle/flika/flika/templates/* -type f -print0 | xargs -0 sed -i 's/"_static\/\(.*\.css\)/"static\/css\/\1/g'

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+	<section id="page-breadcrumb">
+		<div class="vertical-center sun">
+			 <div class="container">
+				<div class="row">
+					<div class="action">
+						<div class="col-sm-12">
+							<h1 class="title">Download FLIKA</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+   </section>
+	<!--/#action-->
+
+	<section>
+		<div class="container">
+			<div class="col-sm-12">
+			    <h2>Setup and Installation</h2>
+				<h3>Windows</h3>
+				<ul>
+				    <li>
+    				<p>Download the <a href="https://github.com/kyleellefsen/Flika/archive/master.zip">FLIKA zipped folder</a> and extract the folder to a location on your computer (Desktop or Program Files preferredly).  Run the 'Flika.bat' file to start Flika. <br>Or follow these steps to create an executable on the desktop:</p>
+    				<ul>
+    				<li>Right click 'Flika.bat' and choose 'Create Shortcut', a shortcut icon should show up.</li>
+    				<li>Rename the 'Flika.bat - Shortcut' to 'Flika', then right click it and select Properties</li>
+    				<li>Click the button that says 'Change Icon' at the bottom of the window. (If a window pops up, press ok).</li>
+    				<li>Select 'Browse' to locate the FLIKA icon, located in the '/Flika-master/images/' folder under the name 'favicon.ico'.</li>
+    				<li>Move the shortcut with the new icon to your desktop. Double click it to run FLIKA!</li>
+    				</ul></li>
+    			</ul>
+				<h3>Linux/Ubuntu</h3>
+    				<ul>
+    					<li>Open a terminal and run the following commands:</li>
+                        <li>
+                        <ul>
+                            <li>sudo apt-get install python-pip python-numpy python-scipy build-essential cython python-matplotlib</li>
+                            <li>sudo pip install scikit-image</li>
+                            <li>sudo pip install future</li>
+                        </ul>
+                        </li>
+                        <li>Download the <a href="https://github.com/kyleellefsen/Flika/archive/master.zip">FLIKA zipped folder</a> and extract the folder to a location on your computer.</li>
+                        <li>Navigate to the directory Flika was downloaded into. Run Flika with the command python FLIKA.py</li>
+    				</ul>
+    			<h3>Mac OS X</h3>
+    			    <ul>
+    			        <li>Install <a href='https://www.continuum.io/downloads'>Anaconda</a> by Continuum. This will install Python along with most of Flika's dependencies.</li>
+    			        <li>Any libraries not included in Anaconda will be installed the first time Flika is run.</li>
+    			        <li>Download the <a href="https://github.com/kyleellefsen/Flika/archive/master.zip">FLIKA zipped folder</a> and extract the folder to a location on your computer.  Navigate to the directory Flika was downloaded into. Run Flika with the command 'python FLIKA.py'</li>
+    			    </ul>
+				<h2>Debugging With The Command Prompt</h2>
+				<p>Open the command prompt and cd to the directory of FLIKA.bat or its desktop shortcut. Execute the command to run the FLIKA file with -debug added on.  This keeps the command prompt from closing when the program opens.</p>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

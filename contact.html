@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section id="page-breadcrumb">
+        <div class="vertical-center sun">
+             <div class="container">
+                <div class="row">
+                    <div class="action">
+                        <div class="col-sm-12">
+                            <h1 class="title">Contact US</h1>
+                            <p>Email us about issues, plugins, ideas, anything.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </section>
+    <!--/#action-->
+
+    <section id="map-section">
+        <div class="container">
+            <div id="gmap"></div>
+            <div class="contact-info">
+                <h2>Contacts</h2>
+                    <address>
+                    Kyle Ellefsen <br>
+                    E-mail: <a href="mailto:kyleellefsen@gmail.com">kyleellefsen@gmail.com</a> <br>
+                    <br>
+                    Brett Settle <br>
+                    E-mail: <a href="mailto:brettjsettle@gmail.com">brettjsettle@gmail.com</a>
+                    </address>
+
+                    <h2>Address</h2>
+                    <address>
+                    1146 Mc Gaugh Hall <br>
+                    University of California, Irvine <br>
+                    Irvine, CA 92697-4550 <br>
+                    Lab Tel: 949-824-7833
+                    </address>
+            </div>
+        </div>
+    </section> <!--/#map-section-->
+
+    <section id="team">
+        <div class="container">
+            <div class="row">
+                <h1 class="title text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay="300ms">Meet the Team</h1>
+                <p class="text-center wow fadeInDown" data-wow-duration="400ms" data-wow-delay="400ms">Created by members of the <a href="http://parkerlab.bio.uci.edu/index.htm">Parker Lab</a>, University of California, Irvine.<br> See what else we're working on. </p>
+                <div id="team-carousel" class="carousel slide wow fadeIn" data-ride="carousel" data-wow-duration="400ms" data-wow-delay="400ms">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators visible-xs">
+                        <li data-target="#team-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#team-carousel" data-slide-to="1"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="team-single-wrapper">
+                                    <div class="team-single">
+                                        <div class="person-thumb">
+                                            <img src="http://parkerlab.bio.uci.edu/pictures/people/Kyle.jpg" class="img-responsive" alt="" align="middle">
+                                        </div>
+                                        <div class="social-profile">
+                                            <ul class="nav nav-pills">
+                                                <li><a href="https://www.linkedin.com/in/kyleellefsen"><i class="fa fa-linkedin"></i></a></li>
+                                                <li><a href="https://www.github.com/kyleellefsen"><i class="fa fa-github"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="person-info">
+                                        <h2>Kyle Ellefsen</h2>
+                                        <p>Programmer &amp; Neurobiologist</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="team-single-wrapper">
+                                    <div class="team-single">
+                                        <div class="person-thumb">
+                                            <img src="static/images/brett.png" align="middle" class="img-responsive" alt="">
+                                        </div>
+                                        <div class="social-profile">
+                                            <ul class="nav nav-pills">
+                                                <li><a href="https://linkedin.com/in/BrettJSettle"><i class="fa fa-linkedin"></i></a></li>
+                                                <li><a href="https://github.com/BrettJSettle"><i class="fa fa-github"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="person-info">
+                                        <h2>Brett Settle</h2>
+                                        <p>Programmer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left team-carousel-control hidden-xs" href="#team-carousel" data-slide="prev">left</a>
+                    <a class="right team-carousel-control hidden-xs" href="#team-carousel" data-slide="next">right</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/#team-->
+
+{% endblock %}
