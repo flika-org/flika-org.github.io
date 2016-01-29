@@ -1,2 +1,3 @@
 name: pyFlika
 markdown: kramdown
+highlighter: rouge
