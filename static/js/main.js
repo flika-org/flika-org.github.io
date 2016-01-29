@@ -15,6 +15,12 @@ jQuery(function($) {'use strict';
 		$("#video-container").fitVids();
 	}
 
+	$(function() {
+		var pathArr = window.location.pathname.split("/"); 
+  		$('nav a[href^="/' + pathArr[pathArr.length - 1] + '"]').addClass('active');
+  		alert(pathArr[pathArr.length - 1]);
+	});
+
 	//Initiat WOW JS
 	new WOW().init();
 
