@@ -706,6 +706,15 @@ ul.sub-menu {
 }
 
 
+.sidebar {
+    position: fixed;
+    top:300; bottom:100; left:50;
+    width:200px;
+    background: #2db300;
+    border-radius: 10px 20px;
+}
+
+
 
 /*************************
 *******About Us Page******
