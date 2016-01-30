@@ -16,9 +16,12 @@ jQuery(function($) {'use strict';
 	}
 
 	$(function() {
-		var pathArr = window.location.pathname.split("/"); 
-  		$('nav a[href^="/' + pathArr[pathArr.length - 1] + '"]').addClass('active');
-  		alert(pathArr[pathArr.length - 1]);
+		var pgurl = window.location.href.substr(window.location.href.lastIndexOf("/")+1);
+		$("#header ul li").each(function(){
+	     	if($('a', this).attr("href") == pgurl || $('a', this).attr("href") == ''){
+	     		$(this).addClass("active");
+		    }
+		})
 	});
 
 	//Initiat WOW JS
