@@ -1,0 +1,14 @@
+---
+layout: default
+title: "Tutorials"
+about: "How to use Flika"
+---
+<body>
+	<ul>
+	  {% for post in site.posts %}
+	    <li>
+	      {{ post.excerpt }}
+	    </li>
+	  {% endfor %}
+	</ul>
+</body>

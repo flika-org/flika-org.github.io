@@ -1,4 +1,3 @@
-
 # Flika Installation
 
 ## Python
@@ -19,28 +18,12 @@ sudo pip install scikit-image
 sudo pip install future
 ```
 
-
-      File "<ipython-input-3-c95f2af57c94>", line 1
-        sudo apt-get install python-pip python-numpy python-scipy build-essential cython python-matplotlib
-               ^
-    SyntaxError: invalid syntax
-    
-
-
 Navigate to the Flika directory and run
 
 
 ```python
 python FLIKA.py
 ```
-
-
-      File "<ipython-input-4-9ef3ed642c06>", line 1
-        python FLIKA.py
-                   ^
-    SyntaxError: invalid syntax
-    
-
 
 ### Mac OS X
 Install Anaconda by Continuum. This will install Python along with most of Flika's dependencies.
@@ -51,11 +34,3 @@ Download the FLIKA zipped folder and extract the folder to a location on your co
 ```python
 python FLIKA.py
 ```
-
-
-      File "<ipython-input-5-9ef3ed642c06>", line 1
-        python FLIKA.py
-                   ^
-    SyntaxError: invalid syntax
-    
-
