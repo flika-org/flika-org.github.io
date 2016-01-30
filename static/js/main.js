@@ -17,6 +17,7 @@ jQuery(function($) {'use strict';
 
 	$(function() {
 		var pgurl = window.location.href.substr(window.location.href.lastIndexOf("/")+1);
+		
 		$("#header ul li").each(function(){
 	     	if($('a', this).attr("href") == pgurl || $('a', this).attr("href") == ''){
 	     		$(this).addClass("active");
