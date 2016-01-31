@@ -1,180 +1,91 @@
 ---
-layout: default
+layout: default_sidebar
 title: Documentation
 about: Developer's guide to Flika
 ---
-
 <style type="text/css">
 
-
-/* Sidebar Menu */
-.ui.sidebar {
-  position: fixed;
-  top: 300;
-  left: 50;
-  height: 60%;
-  padding-left: 10px;
-  padding-top: 20px;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transition: none;
+#sticky {
+  padding-top:10px;
+  padding-left:30px;
+  overflow:auto;
   transition: none;
   will-change: transform;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-  -webkit-overflow-scrolling: touch;
-  /*height: 100% !important;
-  max-height: 100%;
-  border-radius: 10px 30px !important;
-  margin: 0em !important;*/
-  /*overflow-y: auto !important;*/
   z-index: 102;
 }
 
-/* GPU Layers for Child Elements */
-.ui.sidebar > * {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-}
-
-/*--------------
-   Direction
----------------*/
-
-.ui.left.sidebar {
-  right: auto;
-  left: 0px;
-  -webkit-transform: translate3d(-100%, 0, 0);
-          transform: translate3d(-100%, 0, 0);
-}
-.ui.right.sidebar {
-  right: 0px !important;
-  left: auto !important;
-  -webkit-transform: translate3d(100%, 0%, 0);
-          transform: translate3d(100%, 0%, 0);
-}
-.ui.top.sidebar,
-.ui.bottom.sidebar {
-  width: 100% !important;
-  height: auto !important;
-}
-.ui.top.sidebar {
-  top: 0px !important;
-  bottom: auto !important;
-  -webkit-transform: translate3d(0, -100%, 0);
-          transform: translate3d(0, -100%, 0);
-}
-.ui.bottom.sidebar {
-  top: auto !important;
-  bottom: 0px !important;
-  -webkit-transform: translate3d(0, 100%, 0);
-          transform: translate3d(0, 100%, 0);
-}
-
-/*--------------
-     Pushable
----------------*/
-
-.pushable {
-  height: 100%;
-  overflow-x: hidden;
-  padding: 0em !important;
-}
-
-/* Whole Page */
-body.pushable {
-  background: #FFFFFF !important;
-}
-
-/* Page Context */
-.pushable:not(body) {
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-}
-.pushable:not(body) > .ui.sidebar,
-.pushable:not(body) > .fixed,
-.pushable:not(body) > .pusher:after {
-  position: absolute;
-}
-
-/*--------------
-     Fixed
----------------*/
-
-.pushable > .fixed {
-  position: fixed;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transition: -webkit-transform 500ms ease;
-  transition: -webkit-transform 500ms ease;
-  transition: transform 500ms ease;
-  transition: transform 500ms ease, -webkit-transform 500ms ease;
-  will-change: transform;
-  z-index: 101;
-}
-
-/*--------------
-     Page
----------------*/
-
-.pushable > .pusher {
-  position: relative;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  overflow: hidden;
-  min-height: 100%;
-  -webkit-transition: -webkit-transform 500ms ease;
-  transition: -webkit-transform 500ms ease;
-  transition: transform 500ms ease;
-  transition: transform 500ms ease, -webkit-transform 500ms ease;
-  z-index: 2;
-}
-body.pushable > .pusher {
-  background: #FFFFFF;
-}
-
-/* Pusher should inherit background from context */
-.pushable > .pusher {
-  background: inherit;
-}
-
-/*--------------
-     Dimmer
----------------*/
-
-.pushable > .pusher:after {
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  content: '';
-  background-color: rgba(0, 0, 0, 0.4);
-  overflow: hidden;
-  opacity: 0;
-  -webkit-transition: opacity 500ms;
-  transition: opacity 500ms;
-  will-change: opacity;
-  z-index: 1000;
-}
-
-/*--------------
-    Coupling
----------------*/
-
-.ui.sidebar.menu .item {
-  border-radius: 0em !important;
+.sidebar {
+  float: left;
+  top: 20px;
+  left: 20px;
+  padding: 10px 5px 10px 10px;
 }
 
 </style>
-
 <body>
-	<!--div class="ui sidebar inverted vertical menu">
-		<p> No Documentation Yet </p>
-	</div-->
-
-	<section id="map-section">
-        <div class="container">
-			<ul>
-			</ul>
-		</div>
-	</section>
+  <div class="tut-container">
+    <div id="catcher">
+    </div>
+    <div id="sticky">
+      <div class="sidebar">
+        <ul>
+          {% for category in site.categories %}
+            <li>
+              <strong>{{ category | first }}</strong>
+              <ul>
+              {% for tutorials in category %}
+                {% for tutorial in tutorials %}
+                  <li><a href="{{ tutorial.url }}">{{ tutorial.title }}</a></li>
+                {% endfor %}
+              {% endfor %}
+              </ul>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="content">
+      <div tabindex="-1" id="notebook" class="border-box-sizing">
+      <ul>
+        {% for tut in site.posts %}
+            <li>
+            
+              <div class="container" style="margin-left:300px" id="notebook-container">
+              {{ tut.content }}
+              </div>
+            </li>
+          {% endfor %}
+      </ul>
+    </div>
+    </div>
+  </div>
 </body>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+            function isScrolledTo(elem) {
+                var docViewTop = $(window).scrollTop(); //num of pixels hidden above current screen
+                var docViewBottom = docViewTop + $(window).height();
+     
+                var elemTop = $(elem).offset().top; //num of pixels above the elem
+                var elemBottom = elemTop + $(elem).height();
+     
+                return ((elemTop <= docViewTop));
+            }
+     
+            var catcher = $('#catcher');
+            var sticky = $('#sticky');
+     
+            $(window).scroll(function() {
+                if(isScrolledTo(sticky)) {
+                    sticky.css('position','fixed');
+                    sticky.css('top','0px');
+                }
+                var stopHeight = catcher.offset().top + catcher.height();
+                if ( stopHeight > sticky.offset().top) {
+                    sticky.css('position','absolute');
+                    sticky.css('top',stopHeight);
+                }
+            });
+        });
+    </script>

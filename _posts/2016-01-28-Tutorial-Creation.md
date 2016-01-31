@@ -1,8 +1,8 @@
 ---
-title: Tutorial Creation Guide
+title: Tutorial Creation
 category: Developer
 ---
-# Tutorial Creation Guide
+# Tutorial Creation
 
 ## Use an IPython Notebook
 The simplest way to create a tutorial to go on our site is to use amarkdown file from an IPython Notebook.  A pure HTML tutorial is also an option, but would cause many headaches.

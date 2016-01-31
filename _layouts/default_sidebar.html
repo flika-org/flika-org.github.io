@@ -11,6 +11,8 @@
     <link href="static/css/lightbox.css" rel="stylesheet">
 	<link href="static/css/main.css" rel="stylesheet">
 	<link href="static/css/responsive.css" rel="stylesheet">
+    <link href="static/css/notebook.css" rel="stylesheet">
+
 
     <!--[if lt IE 9]>
 	    <script src="js/html5shiv.js"></script>
@@ -77,25 +79,20 @@
     </header>
         {% if page.title != "None" %}
         <section id="page-breadcrumb">
-        <div class="vertical-center sun">
-             <div class="container">
-                <div class="row">
-                    <div class="action">
-                        <div class="col-sm-12">
-                            <h1 class="title">{{ page.title }}</h1>
-                            <p>{{ page.about }}</p>
+            <div class="vertical-center sun">
+                 <div class="container">
+                    <div class="row">
+                        <div class="action">
+                            <div class="col-sm-12">
+                                <h1 class="title">{{ page.title }}</h1>
+                                <p>{{ page.about }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    {% endif %}
-
-    <div class="catcher">
-    </div>
-    <div class="sticky">
-    </div>
+        </section>
+        {% endif %}
 
     {{ content }}
 
