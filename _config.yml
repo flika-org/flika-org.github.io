@@ -1,3 +1,8 @@
 name: pyFlika
 markdown: kramdown
 highlighter: rouge
+collections:
+  -tutorials:
+  output: true
+  -documentation:
+  output: true
