@@ -29,13 +29,7 @@ about: Developer's guide to Flika
     <div class="content">
       <div tabindex="-1" id="notebook" class="border-box-sizing">
       <ul>
-        {% for tut in site.posts %}
-            <li>
-              <div class="container" style="margin-left:300px" id="notebook-container">
-              {{ tut.content }}
-              </div>
-            </li>
-          {% endfor %}
+        {{ content }}
       </ul>
     </div>
     </div>
