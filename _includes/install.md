@@ -1,13 +1,3 @@
-## Flika ##
-
-**Flika** is an interactive image processing program for biologists written in Python.
-
-### Website ###
-[flika-org.github.io](http://flika-org.github.io/)
-
-### Documentation ###
-[flika-org.github.io/documentation.html](http://flika-org.github.io/documentation.html)
-
 ### Installation Instructions ###
 
 #### Windows ####
