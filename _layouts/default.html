@@ -11,6 +11,7 @@
     <link href="static/css/lightbox.css" rel="stylesheet">
 	<link href="static/css/main.css" rel="stylesheet">
 	<link href="static/css/responsive.css" rel="stylesheet">
+    <link href="static/css/notebook.css" rel="stylesheet">
 
     <!--[if lt IE 9]>
 	    <script src="js/html5shiv.js"></script>
@@ -21,6 +22,25 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="static/images/ico/apple-touch-icon-57-precomposed.png">
+    <style type="text/css">
+
+    #sticky {
+      padding-top:10px;
+      padding-left:30px;
+      overflow:auto;
+      transition: none;
+      will-change: transform;
+      z-index: 102;
+    }
+
+    .sidebar {
+      float: left;
+      top: 20px;
+      left: 20px;
+      padding: 10px 5px 10px 10px;
+    }
+
+    </style>
 </head><!--/head-->
 
 <body>
@@ -54,12 +74,12 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="index.html">Home</a></li>
-                        <li class="dropdown"><a href="tutorials.html">Tutorials <i class="fa fa-angle-down"></i></a>
+                        <!--li class="dropdown"><a href="tutorials.html">Tutorials <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="globalAnalysis.html">Global Analysis</a></li>
                             </ul>
-                        </li>
-                        <li><a href="download.html">Download</a></li>
+                        </li-->
+                        <li><a href="install.html">Install</a></li>
                         <li><a href="documentation.html">Documentation</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                     </ul>
@@ -148,4 +168,35 @@
     <script type="text/javascript" src="static/js/wow.min.js"></script>
     <script type="text/javascript" src="static/js/main.js"></script>
 </body>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+            function isScrolledTo(elem) {
+                var docViewTop = $(window).scrollTop(); //num of pixels hidden above current screen
+                var docViewBottom = docViewTop + $(window).height();
+     
+                var elemTop = $(elem).offset().top; //num of pixels above the elem
+                var elemBottom = elemTop + $(elem).height();
+     
+                return ((elemTop <= docViewTop));
+            }
+     
+            var catcher = $('#catcher');
+            var sticky = $('#sticky');
+            sticky.css('position','fixed');
+            sticky.css('position','absolute'); //quick fix
+
+            $(window).scroll(function() {
+                if(isScrolledTo(sticky)) {
+                    sticky.css('position','fixed');
+                    sticky.css('top','0px');
+                }
+                var stopHeight = catcher.offset().top + catcher.height();
+                if ( stopHeight > sticky.offset().top) {
+                    sticky.css('position','absolute');
+                    sticky.css('top',stopHeight);
+                }
+            });
+        });
+    </script>
 </html>
