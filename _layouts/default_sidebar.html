@@ -23,6 +23,25 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="static/images/ico/apple-touch-icon-57-precomposed.png">
+    <style type="text/css">
+
+    #sticky {
+      padding-top:10px;
+      padding-left:30px;
+      overflow:auto;
+      transition: none;
+      will-change: transform;
+      z-index: 102;
+    }
+
+    .sidebar {
+      float: left;
+      top: 20px;
+      left: 20px;
+      padding: 10px 5px 10px 10px;
+    }
+
+    </style>
 </head><!--/head-->
 
 <body>
@@ -151,4 +170,36 @@
     <script type="text/javascript" src="static/js/wow.min.js"></script>
     <script type="text/javascript" src="static/js/main.js"></script>
 </body>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+            function isScrolledTo(elem) {
+                var docViewTop = $(window).scrollTop(); //num of pixels hidden above current screen
+                var docViewBottom = docViewTop + $(window).height();
+     
+                var elemTop = $(elem).offset().top; //num of pixels above the elem
+                var elemBottom = elemTop + $(elem).height();
+     
+                return ((elemTop <= docViewTop));
+            }
+     
+            var catcher = $('#catcher');
+            var sticky = $('#sticky');
+            sticky.css('position','fixed');
+            sticky.css('position','absolute'); //quick fix
+
+            $(window).scroll(function() {
+                if(isScrolledTo(sticky)) {
+                    sticky.css('position','fixed');
+                    sticky.css('top','0px');
+                }
+                var stopHeight = catcher.offset().top + catcher.height();
+                if ( stopHeight > sticky.offset().top) {
+                    sticky.css('position','absolute');
+                    sticky.css('top',stopHeight);
+                }
+            });
+        });
+    </script>
 </html>
