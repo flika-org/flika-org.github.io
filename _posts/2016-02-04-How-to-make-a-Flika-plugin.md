@@ -26,15 +26,23 @@ To add the plugin to the FLIKA database, it must be organized in a way that FLIK
         -docs_files...
 ```
 
-Where the \_\_init\_\_.py file must contain:
+Where the \_\_init\_\_.py file must be a python dictionary with the following key-value pairs:
 
 
 ```python
-dependencies = ['list', 'of', 'dependencies'] #installed from pypi and Gohkle's wheel library
-name = 'Plugin Name'
-date = 'MM/DD/YYYY' #date must be in this format to manage updates
-base_dir = 'PluginFolderName' #module name used in plugin (eg. from PluginFolderName import submodule)
-menu_layout = {'Menu Name': {'SubAction': ['path_to', 'function']}}
+{'name': 'Plugin Name',
+'author': 'Author Name',
+'description': 'Description of what your plugin does',
+'base_dir': 'PluginFolderName',
+		# Usually Plugin Name without spaces (eg. from PluginFolderName import submodule)
+'dependencies': ['list', 'of', 'dependencies'],
+		# installed from pypi and Gohkle's wheel library
+'date': 'MM/DD/YYYY', 
+		# date must be in this format to manage updates
+'menu_layout': {'Menu Name': {'SubAction': ['path_to', 'function']}},
+'docs': 'Documentation url'	
+		# Optional
+}
 ```
 
 It should be noted that the above \_\_init\_\_.py file will add a submenu 'Menu Name' to the Plugins Menu, which has a subaction 'SubAction' that will import 'path_to' and run the 'function' attribute of the resulting import.  For instance if you have a window object in a plugin module, adding the window.show() function to the menu would look like:
@@ -44,12 +52,16 @@ It should be noted that the above \_\_init\_\_.py file will add a submenu 'Menu 
 {'Menu Name': {'SubAction': ['path_to', 'function'], 'Show Window': ['PluginFolderName.module', 'window.show']}}
 ```
 
-NOTE: Because this is a .py file, it may be helpful to include 'from collections import OrderedDict' in your \_\_init\_\_.py and create your menu_layout as an OrderedDict to maintain ordering. Above Example:
+NOTE: Because this is a .py file, it may be helpful to use a list of tuples to create your menu_layout so the order of the menu is preserved. Above Example:
 
 
 ```python
-    menu_layout = {'Menu Name': OrderedDict([('SubAction', ['path_to', 'function']), \
-                                             ('Show Window', ['module', 'instance.show'])])}
+    menu_layout = {'Menu Name': [('SubAction', ['path_to', 'function']), \
+                                             ('Show Window', ['module', 'instance.show'])]}
 ```
 
-When the author makes an update to a Plugin, he/she should set the date attribute to its new value, and alert authors of FLIKA.  Once the database has been updated as well, FLIKA users will be able to see and install the update.
+IMPORTANT: 
+	url zip files must have a single folder containing the plugin code, as well as an \_\_init\_\_.py file. To see the outline of an init file check 'How to write plugins for FLIKA'
+	The names listed must match EXACTLY to the names listed in the \_\_init\_\_.py files of FLIKA plugins.
+	When the author makes an update to a Plugin, he/she should set the date attribute to the current date and update this \_\_init\_\_ file.  FLIKA will automatically refer to the \_\_init\_\_ file to alert the user if updates are available.
+
