@@ -40,6 +40,7 @@ Where the \_\_init\_\_.py file must be a python dictionary with the following ke
 'date': 'MM/DD/YYYY', 
 		# date must be in this format to manage updates
 'menu_layout': {'Menu Name': {'SubAction': ['path_to', 'function']}},
+'url': 'http://www.com/path/to/plugin/url.zip'
 'docs': 'Documentation url'	
 		# Optional
 }
