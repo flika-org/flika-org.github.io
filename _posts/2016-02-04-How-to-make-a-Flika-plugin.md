@@ -22,47 +22,53 @@ To add the plugin to the FLIKA database, it must be organized in a way that FLIK
     -__init__.py
     -my_code.py
     -more_code.py
+    -info.xml
     -optional_docs
         -docs_files...
 ```
 
-Where the \_\_init\_\_.py file must be a python dictionary with the following key-value pairs:
+Where the info.xml file must be be structured like:
 
 
-```python
-{'name': 'Plugin Name',
-'author': 'Author Name',
-'description': 'Description of what your plugin does',
-'base_dir': 'PluginFolderName',
-		# Usually Plugin Name without spaces (eg. from PluginFolderName import submodule)
-'dependencies': ['list', 'of', 'dependencies'],
-		# installed from pypi and Gohkle's wheel library
-'date': 'MM/DD/YYYY', 
-		# date must be in this format to manage updates
-'menu_layout': {'Menu Name': {'SubAction': ['path_to', 'function']}},
-'url': 'http://www.com/path/to/plugin/url.zip'
-'docs': 'Documentation url'	
-		# Optional
-}
+```
+<plugin name="Plugin Name">
+	<base_dir>
+		PluginDirectory
+	</base_dir>
+	<date>
+		MM/DD/YYYY
+	</date>
+	<author>
+		Author Name
+	</author>
+	<description>
+		A description about yoru plugin that will show in the plugin manager. This text body can contain paragraphs and links, but will only be parsed as plain text
+	</description>
+	<url>
+		http://github.com/path/to/plugin.zip
+	</url>
+	<menu_layout>
+		<action location="module" function="gui">Action Text</action>
+			<!-- Creates a subaction "Action Text" that runs function "gui" imported by "from module import gui" -->
+		<menu name="Menu 1">
+			<action location="module.submodule" function="obj.func">Action 1</action>
+			<!-- Pressing this action runs method func of object obj found in from module.submodule import obj and runnin obj.func() -->
+			<action location="loc2" function="f2">Action 2</action>
+		</menu>
+		<menu name="Menu 2">
+			<action location="loc3" function="f3">Action3</action>
+			<menu name="Submenu">
+				<action location="loc3.5" function="f3.5">Action Here</action>
+			</menu>
+		</menu>
+	</menu_layout>
+</plugin>
 ```
 
-It should be noted that the above \_\_init\_\_.py file will add a submenu 'Menu Name' to the Plugins Menu, which has a subaction 'SubAction' that will import 'path_to' and run the 'function' attribute of the resulting import.  For instance if you have a window object in a plugin module, adding the window.show() function to the menu would look like:
-
-
-```python
-{'Menu Name': {'SubAction': ['path_to', 'function'], 'Show Window': ['PluginFolderName.module', 'window.show']}}
-```
-
-NOTE: Because this is a .py file, it may be helpful to use a list of tuples to create your menu_layout so the order of the menu is preserved. Above Example:
-
-
-```python
-    menu_layout = {'Menu Name': [('SubAction', ['path_to', 'function']), \
-                                             ('Show Window', ['module', 'instance.show'])]}
-```
+It should be noted that the above info.xml file will create a Menu titled "Plugin Name" and add subaction "ActionText" and submenus "Menu 1", "Menu 2" with their child actions/menus.  The location and function attributes of the action tags help define what method is executed when the action is triggered.
 
 IMPORTANT: 
-	url zip files must have a single folder containing the plugin code, as well as an \_\_init\_\_.py file. To see the outline of an init file check 'How to write plugins for FLIKA'
-	The names listed must match EXACTLY to the names listed in the \_\_init\_\_.py files of FLIKA plugins.
-	When the author makes an update to a Plugin, he/she should set the date attribute to the current date and update this \_\_init\_\_ file.  FLIKA will automatically refer to the \_\_init\_\_ file to alert the user if updates are available.
+	URL zip files must have a single folder containing the plugin code, as well as an \_\_init\_\_.py and a sample.xml file.
+	The base_dir and name must match EXACTLY with import statements in code and with the Flika plugin_data.txt file.
+	When the author makes an update to a Plugin, he/she should set the date attribute to the current date and update the info.xml file.  FLIKA will automatically refer to this file to alert users if updates are available.
 
