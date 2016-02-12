@@ -43,7 +43,7 @@ jQuery(function($) {'use strict';
         sticky.css('position','absolute'); //quick fix
 
         $(window).scroll(function() {
-        	if (catcher)
+        	if ($('#sticky'))
         	{
 	            if(isScrolledTo(sticky)) {
 	                sticky.css('position','fixed');
