@@ -10,6 +10,7 @@ about: Developer's guide to Flika
     </div>
     <div id="sticky">
       <div class="sidebar">
+      <p>Tutorials and Documentation</p>
         <ul>
           {% for category in site.categories %}
             <li>
@@ -28,7 +29,29 @@ about: Developer's guide to Flika
     </div>
     <div class="content">
       <div tabindex="-1" id="notebook" class="border-box-sizing">
-      <ul>
+        <ul>
+          <li>
+            <div class="container" style="margin-left:300px" id="notebook-container">
+              <h1>Flika Tutorials and Documentation</h1>
+              <p>Welcome to the documentation page for FLIKA. We are currently working on creating helpful tutorials for all of FLIKA's abilities. Check out the tutorials we have so far to get started with Flika, or look into the documentation to start writing your own plugins and scripts.<br>
+              If there isn't a tutorial for the type of analysis you'd like to see, or if you have any questions, email us and we'll get to work on it. </p>
+
+              <ul>
+                {% for category in site.categories %}
+                  <li>
+                    <strong>{{ category | first | capitalize }}</strong>
+                    <ul>
+                    {% for tutorials in category %}
+                      {% for tutorial in tutorials %}
+                        <li><a href="{{ tutorial.url }}">{{ tutorial.title }}</a></li>
+                      {% endfor %}
+                    {% endfor %}
+                    </ul>
+                  </li>
+                {% endfor %}
+              </ul>
+          </div>
+      <!--ul>
         {% for tut in site.posts %}
             <li>
               <div class="container" style="margin-left:300px" id="notebook-container">
@@ -36,7 +59,7 @@ about: Developer's guide to Flika
               </div>
             </li>
           {% endfor %}
-      </ul>
+      </ul-->
     </div>
     </div>
   </div>

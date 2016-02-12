@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Tutorial Creation
 category: Developer
 ---
