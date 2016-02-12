@@ -26,7 +26,6 @@ jQuery(function($) {'use strict';
 	});
 
 	
-	if ($('#catcher').length){
 	    $(document).ready(function() {
 	        function isScrolledTo(elem) {
 	            var docViewTop = $(window).scrollTop(); //num of pixels hidden above current screen
@@ -44,15 +43,18 @@ jQuery(function($) {'use strict';
 	        sticky.css('position','absolute'); //quick fix
 
 	        $(window).scroll(function() {
-	            if(isScrolledTo(sticky)) {
-	                sticky.css('position','fixed');
-	                sticky.css('top','0px');
-	            }
-	            var stopHeight = catcher.offset().top + catcher.height();
-	            if ( stopHeight > sticky.offset().top) {
-	                sticky.css('position','absolute');
-	                sticky.css('top',stopHeight);
-	            }
+	        	if (catcher)
+	        	{
+		            if(isScrolledTo(sticky)) {
+		                sticky.css('position','fixed');
+		                sticky.css('top','0px');
+		            }
+		            var stopHeight = catcher.offset().top + catcher.height();
+		            if ( stopHeight > sticky.offset().top) {
+		                sticky.css('position','absolute');
+		                sticky.css('top',stopHeight);
+		            }
+		        }
 	        });
 	    });
 	}
