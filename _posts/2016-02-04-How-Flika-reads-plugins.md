@@ -1,4 +1,5 @@
 ---
+layout: documentation
 title: How Flika reads plugins
 category: Plugins
 ---

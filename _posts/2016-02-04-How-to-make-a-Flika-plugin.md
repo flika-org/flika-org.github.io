@@ -1,4 +1,5 @@
 ---
+layout: documentation=
 title: How to make a Flika plugin
 category: Plugins
 ---

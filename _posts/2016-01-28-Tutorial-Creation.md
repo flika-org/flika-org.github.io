@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: documentation
 title: Tutorial Creation
 category: Developer
 ---
@@ -12,6 +12,7 @@ The simplest way to create a tutorial to go on our site is to use amarkdown file
 To clarify what type of tutorial you are writing, specify information about your tutorial at the top of your markdown file
 
 	---
+	layout: documentation
 	title: Your Tutorial Title Here
 	category: category name (or [list, of, names])
 	permalink: /path/to/html (optional)
