@@ -536,7 +536,7 @@ ul.sub-menu {
   position: absolute;
   top: 50px;
   left: 0;
-  width: 450px;
+  width: 35%;
 }
 
 @media only screen and (max-width: 1026px) {

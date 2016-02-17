@@ -48,3 +48,10 @@ p {
 .container {
     width: 540px;
 }
+@media only screen and (max-width: 40em) { 
+    .container {
+	  margin:0px;	
+      padding:0px;
+    }
+				
+}
