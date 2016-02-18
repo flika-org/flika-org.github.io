@@ -42,10 +42,12 @@ p {
 @media only screen and (max-width: 40em) { 
     .container {
 	  margin:0px;
-      
     }
     #notebook-container{
-    	margin-left:0px;
+    	margin-left:10%;
+    }
+    #sticky{
+    	display:none;
     }
 				
 }
