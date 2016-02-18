@@ -41,7 +41,7 @@ p {
 
 @media only screen and (max-width: 40em) { 
     .container {
-	  margin:0px;	
+	  margin:0px;
       
     }
     #notebook-container{
