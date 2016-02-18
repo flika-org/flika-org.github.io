@@ -35,24 +35,17 @@ p {
 .highlighter-rouge {
 	padding-top:5px;
 }
-/*
-@media (min-width: 1200px)
-.container {
-    width: 970px;
+#notebook-container{
+	margin-left: 300px;
 }
-@media (min-width: 992px)
-.container {
-    width: 750px;
-}
-@media (min-width: 768px)
-.container {
-    width: 540px;
-}
-*/
+
 @media only screen and (max-width: 40em) { 
     .container {
 	  margin:0px;	
-      padding:0px;
+      
+    }
+    #notebook-container{
+    	margin-left:0px;
     }
 				
 }
