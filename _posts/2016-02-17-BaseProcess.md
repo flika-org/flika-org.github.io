@@ -77,4 +77,4 @@ This file creates the abstract classes and components to create Process Dialogs 
     Get the value of a widget item "name" in the self.items dict
 
 ## class BaseProcess_noPriorWindow(BaseProcess):
-    Abstract class of type BaseProcess that ignores g.m.currentWindow
+>Abstract class of type BaseProcess that ignores g.m.currentWindow
