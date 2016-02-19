@@ -1,11 +1,8 @@
----
-layout: documentation
-title: BaseProcess
-category: Documentation
----
+
 # BaseProcess.py
 --------------
-This file creates the abstract classes and components to create Process Dialogs for user defined analysis parameters.
+    This file creates the abstract classes and components to create Process Dialogs for user defined analysis parameters.
+
 ## class WindowSelector(QWidget):
 >    Widget for selecting a Window to be referred to by a process
     Signals
@@ -44,7 +41,8 @@ This file creates the abstract classes and components to create Process Dialogs 
     Signals
         -changeSignal: emitted when any item widget value in the BaseDialog is changed
         -closeSignal: emitted when the base dialog box is closed, whether accepted or cancelled
-#### def __init__(self,items,title,docstring):
+
+> #### def __init__(self,items,title,docstring):
     Parameters:
         -items: list of dicts specifying widgets. Each dict comprised of
             {'string': 'Label Text',
@@ -55,14 +53,15 @@ This file creates the abstract classes and components to create Process Dialogs 
 
 ## class BaseProcess(object):
 >    Abstract class provided for process creation. Contains methods for displaying a BaseDialog of items, manipulating an image stack, and outputting a new window with the applied changes.  IMPORTANT: BaseProcess requires the user to have a currentWindow selected. For processes that don't need initial windows, refer to BaseProcess_noPriorWindow
-####  def gui(self):
+
+> ####  def gui(self):
     Create a gui to display the widgets for analysis arguments. General template:
 ```python
     self.gui_reset()
     #... build self.items list
     super().gui() # this shows the gui dialog
 ```
-####  def __call__(self, *args):
+> ####  def __call__(self, *args):
     Called when BaseDialog is accepted. self.items widgets are passed in by (name, value) pairs, parameter names must match names stated in gui function.
     NOTE:
         -To create a new window with manipulated image, use this template:
@@ -77,4 +76,9 @@ This file creates the abstract classes and components to create Process Dialogs 
     Get the value of a widget item "name" in the self.items dict
 
 ## class BaseProcess_noPriorWindow(BaseProcess):
->Abstract class of type BaseProcess that ignores g.m.currentWindow
+    Abstract class of type BaseProcess that ignores g.m.currentWindow
+
+
+```python
+
+```
