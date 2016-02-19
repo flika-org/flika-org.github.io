@@ -1,3 +1,8 @@
+---
+layout: documentation
+title: BaseProcess
+about: BaseProcess.py documentation
+---
 
 # BaseProcess.py
 --------------
