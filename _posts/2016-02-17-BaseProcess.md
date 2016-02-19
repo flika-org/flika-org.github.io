@@ -79,3 +79,8 @@ This file creates the abstract classes and components to create Process Dialogs 
 
 ## class BaseProcess_noPriorWindow(BaseProcess):
     Abstract class of type BaseProcess that ignores g.m.currentWindow
+
+
+```python
+
+```
