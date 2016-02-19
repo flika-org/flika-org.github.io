@@ -5,7 +5,7 @@ category: Documentation
 ---
 # BaseProcess.py
 --------------
-    This file creates the abstract classes and components to create Process Dialogs for user defined analysis parameters.
+This file creates the abstract classes and components to create Process Dialogs for user defined analysis parameters.
 ## class WindowSelector(QWidget):
 >    Widget for selecting a Window to be referred to by a process
     Signals
@@ -78,8 +78,3 @@ category: Documentation
 
 ## class BaseProcess_noPriorWindow(BaseProcess):
     Abstract class of type BaseProcess that ignores g.m.currentWindow
-
-
-```python
-
-```
