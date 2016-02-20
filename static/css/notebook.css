@@ -32,6 +32,11 @@ p {
 	padding-bottom:10px;
 }
 
+code.highlighter-rouge{
+	border: 1px solid #ccc;
+	display: block;
+}
+
 .highlighter-rouge {
 	padding-top:5px;
 }
