@@ -31,6 +31,7 @@ Where the info.xml file must be be structured as follows:
 
 
 
+
 	<plugin name="Plugin Name">
 		<base_dir>
 			PluginDirectory
@@ -72,7 +73,7 @@ It should be noted that the above info.xml file will create a Menu titled "Plugi
 
 
 ### IMPORTANT: 
-	URL zip files must have a single folder containing the plugin code, as well as an __init__.py and a sample.xml file.
-	The base_dir and name must match EXACTLY with import statements in code and with the Flika plugin_data.txt file.
-	When the author makes an update to a Plugin, he/she should set the date attribute to the current date and update the info.xml file.  FLIKA will automatically refer to this file to alert users if updates are available.
+URL zip files must have a single folder containing the plugin code, as well as an __init__.py and a sample.xml file.
+The base_dir and name must match EXACTLY with import statements in code and with the Flika plugin_data.txt file.
+When the author makes an update to a Plugin, he/she should set the date attribute to the current date and update the info.xml file.  FLIKA will automatically refer to this file to alert users if updates are available.
 
