@@ -35,6 +35,7 @@ p {
 code.highlighter-rouge{
 	border: 1px solid #ccc;
 	display: block;
+	border-radius: 5px;
 }
 
 .highlighter-rouge {
