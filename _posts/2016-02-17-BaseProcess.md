@@ -60,7 +60,7 @@ Signals
 Parameters:
 
 - items: list of dicts specifying widgets. Each dict comprised of
-    {'string': 'Label Text',
+    - {'string': 'Label Text',
      'object': widgetItem,
      'name': 'name used to get item value'}
 - title: Title displayed at the top of the dialog window
@@ -68,6 +68,7 @@ Parameters:
 
 ## class BaseProcess(object):
 Abstract class provided for process creation. Contains methods for displaying a BaseDialog of items, manipulating an image stack, and outputting a new window with the applied changes.
+
 IMPORTANT: BaseProcess requires the user to have a currentWindow selected. For processes that don't need initial windows, refer to BaseProcess_noPriorWindow
 
 ####  def gui(self):
