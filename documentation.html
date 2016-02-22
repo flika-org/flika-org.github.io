@@ -9,14 +9,12 @@ about: Developer's guide to Flika
 If there isn't a tutorial for the type of analysis you'd like to see, or if you have any questions, email us and we'll get to work on it. </p>
 
 <ul>
-  {% for category in site.categories %}
+  {% for category in site.documentation %}
     <li>
       <strong>{{ category | first | capitalize }}</strong>
       <ul>
-      {% for tutorials in category %}
-        {% for tutorial in tutorials %}
-          <li><a href="{{ tutorial.url }}">{{ tutorial.title }}</a></li>
-        {% endfor %}
+      {% for tutorials in category.nested-pages %}
+        <li><a href="{{ tutorial.url }}">{{ tutorial.nested }}</a></li>
       {% endfor %}
       </ul>
     </li>
