@@ -12,15 +12,13 @@ about: Developer's guide to Flika
       <div class="sidebar">
       <p><a href="/documentation.html">Tutorials and Documentation</a></p>
         <ul>
-          {% for category in site.categories %}
+          {% for category in page.docs %}
             <li>
-              <strong>{{ category | first | capitalize }}</strong>
+              <p><strong>{{ category.top-level }}</strong></p>
               <ul>
-              {% for tutorials in category %}
-                {% for tutorial in tutorials %}
-                  <li><a href="{{ tutorial.url }}">{{ tutorial.title }}</a></li>
+                {% for tutorial in category.nested-docs %}
+                  <li><a href="/docs/{{ tutorial.site }}">{{ tutorial.nested }}</a></li>
                 {% endfor %}
-              {% endfor %}
               </ul>
             </li>
           {% endfor %}
@@ -40,3 +38,4 @@ about: Developer's guide to Flika
     </div>
   </div>
 </body>
+
