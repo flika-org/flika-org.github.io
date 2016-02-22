@@ -14,7 +14,7 @@ If there isn't a tutorial for the type of analysis you'd like to see, or if you 
       <strong>{{ category | first | capitalize }}</strong>
       <ul>
       {% for tutorials in category.nested-pages %}
-        <li><a href="{{ tutorial.url }}">{{ tutorial.nested }}</a></li>
+        <li><a href="/docs/{{ tutorial.site }}">{{ tutorial.nested }}</a></li>
       {% endfor %}
       </ul>
     </li>
