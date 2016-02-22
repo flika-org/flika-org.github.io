@@ -41,7 +41,9 @@ code.highlighter-rouge{
 .highlighter-rouge {
 	padding-top:5px;
 }
-#notebook-container{
+iframe{
+	border:none;
+	width: 70%;
 	margin-left: 300px;
 }
 
@@ -49,7 +51,7 @@ code.highlighter-rouge{
     .container {
 	  margin:0px;
     }
-    #notebook-container{
+    iframe{
     	margin-left:10%;
     }
     #sticky{

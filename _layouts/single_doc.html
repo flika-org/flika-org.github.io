@@ -1,0 +1,42 @@
+---
+layout: default
+title: Documentation
+about: Developer's guide to Flika
+---
+<script type="text/javascript">
+  function resizeIframe(obj){
+     obj.style.height = 0;
+     obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  }
+</script>
+<body>
+<link href="/static/css/notebook.css" rel="stylesheet">
+  <div class="tut-container">
+    <div id="catcher">
+    </div>
+    <div id="sticky">
+      <div class="sidebar">
+      <p><a href="/documentation.html">Tutorials and Documentation</a></p>
+        <ul>
+          {% for category in site.categories %}
+            <li>
+              <strong>{{ category | first | capitalize }}</strong>
+              <ul>
+              {% for tutorials in category %}
+                {% for tutorial in tutorials %}
+                  <li><a href="{{ tutorial.url }}">{{ tutorial.title }}</a></li>
+                {% endfor %}
+              {% endfor %}
+              </ul>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="content">
+      <div tabindex="-1" id="notebook" class="border-box-sizing">
+        <iframe src="/docs/{{ page.filename }}" onload="resizeIframe(this)"></iframe>
+      </div>
+    </div>
+  </div>
+</body>
