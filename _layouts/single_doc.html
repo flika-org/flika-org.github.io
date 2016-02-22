@@ -3,12 +3,6 @@ layout: default
 title: Documentation
 about: Developer's guide to Flika
 ---
-<script type="text/javascript">
-  function resizeIframe(obj){
-     obj.style.height = 0;
-     obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-  }
-</script>
 <body>
 <link href="/static/css/notebook.css" rel="stylesheet">
   <div class="tut-container">
@@ -34,9 +28,13 @@ about: Developer's guide to Flika
       </div>
     </div>
     <div class="content">
-      <div tabindex="-1" id="notebook" class="border-box-sizing">
-        <iframe src="/docs/{{ page.filename }}" onload="resizeIframe(this)"></iframe>
-      </div>
+      <iframe src="/docs_html/{{ page.filename }}" onload="resizeIframe(this)"></iframe>
     </div>
   </div>
 </body>
+<script type="text/javascript">
+  function resizeIframe(obj){
+     obj.style.height = 0;
+     obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  }
+</script>
