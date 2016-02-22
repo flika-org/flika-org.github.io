@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>BaseProcess</title>
+<title>Window</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -176,107 +176,69 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="process/BaseProcess.py">process/BaseProcess.py<a class="anchor-link" href="#process/BaseProcess.py">&#182;</a></h1><hr>
-
-<pre><code>This file creates the abstract classes and components to create Process Dialogs for user defined analysis parameters.
-
-</code></pre>
-<h2 id="class-WindowSelector(QWidget):">class WindowSelector(QWidget):<a class="anchor-link" href="#class-WindowSelector(QWidget):">&#182;</a></h2>
-<pre><code>Widget for selecting a Window to be referred to by a process
-Signals
-    -valueChanged: emitted when a window is selected by the user
+<h1 id="window.py">window.py<a class="anchor-link" href="#window.py">&#182;</a></h1><hr>
+<h2 id="class-Window(QWidget):">class Window(QWidget):<a class="anchor-link" href="#class-Window(QWidget):">&#182;</a></h2>
+<pre><code>Movie Window backended by pyqtgraph ImageView, with provided support for 2D, 3D, and color images.  Drag with the left mouse button to drag the frame, drag with the right to draw an ROI. Bottom scrollbar for frame scrolling, and Lookup table on the right.  For extra commands, use self.imageview and refer to pyqtgraph ImageView documentation
 
 </code></pre>
-<h2 id="class-FileSelector(QWidget):">class FileSelector(QWidget):<a class="anchor-link" href="#class-FileSelector(QWidget):">&#182;</a></h2>
-<pre><code>Widget that opens a dialog to allow the user to select a file
-Signals
-    -valueChanged: emitted when a file is selected by the user
+<blockquote><h3 id="Attributes:">Attributes:<a class="anchor-link" href="#Attributes:">&#182;</a></h3>
+<pre><code>    -imageview: pyqtgraph.ImageView item used to display the image array
+    -image: image array set when window was created. IMPORTANT: self.imageview.setImage() does not change this attribute. Most processes create new windows
+    -name: title given to this window
+    -filename: image filename if specified
+    -commands: list of string commands used to recreate the window (eg ['open_file("file_name.tif")'])
+    -mx, my, mt: movie width, height, and length
+    -currentIndex: Frame index that the ImageView is showing
+    -linkedWindows: list of windows that scroll with this window
 
 </code></pre>
-<h2 id="class-SliderLabel(QWidget):">class SliderLabel(QWidget):<a class="anchor-link" href="#class-SliderLabel(QWidget):">&#182;</a></h2>
-<pre><code>Widget instance of QSpinBox with visible Label next to it.
-Signals
-    -valueChanged: emitted when the slider is moved
-Functions:
-</code></pre>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">decimals</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="o">-</span><span class="n">decimals</span> <span class="n">represents</span> <span class="n">resolution</span><span class="o">.</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">integers</span><span class="p">,</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">tens</span> <span class="n">place</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span>
-    <span class="k">def</span> <span class="nf">setRange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">minn</span><span class="p">,</span><span class="n">maxx</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setMinimum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">minn</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setMaximum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">maxx</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setSingleStep</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
-</pre></div>
-<h2 id="class-SliderLabelOdd(SliderLabel):">class SliderLabelOdd(SliderLabel):<a class="anchor-link" href="#class-SliderLabelOdd(SliderLabel):">&#182;</a></h2>
-<pre><code>SliderLabel subclass that forces the user to pick an odd value
-refer to SliderLabel
+<h3 id="Signals:">Signals:<a class="anchor-link" href="#Signals:">&#182;</a></h3>
+<pre><code>    -closeSignal: emitted when the window is closed
+    -keyPressSignal: emitted when the user presses a key on the window
+    -deleteButtonSignal: emitted when an ROIs delete button is pressed
+    -sigTimeChanged:emitted when the currentIndex of the movie is changed (via the slider or setIndex)
 
 </code></pre>
-<h2 id="class-CheckBox(QCheckBox):">class CheckBox(QCheckBox):<a class="anchor-link" href="#class-CheckBox(QCheckBox):">&#182;</a></h2>
-<pre><code>Overwritten QCheckBox class to give it the 'setValue' method
+<h4 id="def-__init__(self,tif,name='Flika',filename='',commands=[],metadata=dict()):">def __init__(self,tif,name='Flika',filename='',commands=[],metadata=dict()):<a class="anchor-link" href="#def-__init__(self,tif,name='Flika',filename='',commands=[],metadata=dict()):">&#182;</a></h4>
+<pre><code>    Create a new window instance to display tif
+    Parameters:
+        -tif: the 2D, 3D, or 4D array image to display in the ImageView
+        -name: name and window title to display
+        -filename: name of file used to load the window, used for recreating
+        -commands: list of commands used to create a window
+        -metadata: dict of data to consider when using an image
+
 </code></pre>
-<blockquote><h4 id="def-setValue(self,value):">def setValue(self,value):<a class="anchor-link" href="#def-setValue(self,value):">&#182;</a></h4>
-<pre><code>Set the value of the Checkbox to be True or False. Runs setChecked(value)</code></pre>
+<h4 id="def-link(self,-win):">def link(self, win):<a class="anchor-link" href="#def-link(self,-win):">&#182;</a></h4>
+<pre><code>    Link window frame sliders to scroll through movies simultaneously. This can be done via sliders the context menu
+
+</code></pre>
+<h4 id="def-unlink(self,-win):">def unlink(self, win):<a class="anchor-link" href="#def-unlink(self,-win):">&#182;</a></h4>
+<pre><code>    Unlink window frame sliders. This can be done via the sliders context menu
+
+</code></pre>
+<h4 id="def-setIndex(self,index):">def setIndex(self,index):<a class="anchor-link" href="#def-setIndex(self,index):">&#182;</a></h4>
+<pre><code>    Set the current index of the movie to be index, scrolling to the frame and emitting the indexChanged event
+
+</code></pre>
+<h4 id="def-setName(self,name):">def setName(self,name):<a class="anchor-link" href="#def-setName(self,name):">&#182;</a></h4>
+<pre><code>    Set the name attribute and window title of this Window
+
+</code></pre>
+<h4 id="def-reset(self):">def reset(self):<a class="anchor-link" href="#def-reset(self):">&#182;</a></h4>
+<pre><code>    Revert the window to show its self.image attribute. This is useful when using imageview.setImage to display a temporary image, such as a process preview.
+
+</code></pre>
+<h4 id="def-paste(self):">def paste(self):<a class="anchor-link" href="#def-paste(self):">&#182;</a></h4>
+<pre><code>    Pastes an ROI that has been copied. ROI will be linked to it's parent and will translate simultaneously
+
+</code></pre>
+<h4 id="def-setAsCurrentWindow(self):">def setAsCurrentWindow(self):<a class="anchor-link" href="#def-setAsCurrentWindow(self):">&#182;</a></h4>
+<pre><code>    Select the window as the g.m.currentWindow. highlighting it and putting "Flika - " at the start of its title</code></pre>
 </blockquote>
-<h2 id="class-BaseDialog(QDialog):">class BaseDialog(QDialog):<a class="anchor-link" href="#class-BaseDialog(QDialog):">&#182;</a></h2>
-<pre><code>Dialog for users to manipulate widgets to set analysis parameters.  Items aligned in a FormLayout with cancel, ok, and a docstring displayed at the top of the dialog.
-Signals
-    -changeSignal: emitted when any item widget value in the BaseDialog is changed
-    -closeSignal: emitted when the base dialog box is closed, whether accepted or cancelled
-
-</code></pre>
-<blockquote><h4 id="def-__init__(self,items,title,docstring):">def __init__(self,items,title,docstring):<a class="anchor-link" href="#def-__init__(self,items,title,docstring):">&#182;</a></h4>
-<pre><code>Parameters:
-    -items: list of dicts specifying widgets. Each dict comprised of
-        {'string': 'Label Text',
-         'object': widgetItem,
-         'name': 'name used to get item value'}
-    -title: Title displayed at the top of the dialog window
-    -docstring: Information to display above the widget items</code></pre>
-</blockquote>
-<h2 id="class-BaseProcess(object):">class BaseProcess(object):<a class="anchor-link" href="#class-BaseProcess(object):">&#182;</a></h2>
-<pre><code>Abstract class provided for process creation. Contains methods for displaying a BaseDialog of items, manipulating an image stack, and outputting a new window with the applied changes.  IMPORTANT: BaseProcess requires the user to have a currentWindow selected. For processes that don't need initial windows, refer to BaseProcess_noPriorWindow
-
-</code></pre>
-<blockquote><h4 id="def-gui(self):">def gui(self):<a class="anchor-link" href="#def-gui(self):">&#182;</a></h4>
-<pre><code>Create a gui to display the widgets for analysis arguments. General template:
-</code></pre>
-<div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">gui_reset</span><span class="p">()</span>
-    <span class="c1">#... build self.items list</span>
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">gui</span><span class="p">()</span> <span class="c1"># this shows the gui dialog</span>
-</pre></div>
-<h4 id="def-call(self,-*args):">def <strong>call</strong>(self, *args):<a class="anchor-link" href="#def-call(self,-*args):">&#182;</a></h4>
-<pre><code>Called when BaseDialog is accepted. self.items widgets are passed in by (name, value) pairs, parameter names must match names stated in gui function.
-NOTE:
-    -To create a new window with manipulated image, use this template:
-</code></pre>
-<div class="highlight"><pre><span></span><span class="c1">#... get widget values and apply manipulation</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">newtif</span> <span class="o">=</span> <span class="n">resulting</span> <span class="n">image</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">newname</span> <span class="o">=</span> <span class="s2">&quot;Name of Image after manipulation&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;command as string used to create window&quot;</span> <span class="p">(</span><span class="n">Optional</span><span class="p">:</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">scripts</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
-</pre></div>
-<h4 id="def-getValue(self,name):">def getValue(self,name):<a class="anchor-link" href="#def-getValue(self,name):">&#182;</a></h4>
-<pre><code>Get the value of a widget item "name" in the self.items dict</code></pre>
-</blockquote>
-<h2 id="class-BaseProcess_noPriorWindow(BaseProcess):">class BaseProcess_noPriorWindow(BaseProcess):<a class="anchor-link" href="#class-BaseProcess_noPriorWindow(BaseProcess):">&#182;</a></h2>
-<pre><code>Abstract class of type BaseProcess that ignores g.m.currentWindow</code></pre>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
     </div>
   </div>

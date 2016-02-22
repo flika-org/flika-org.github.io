@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>BaseProcess</title>
+<title>roi</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -176,107 +176,139 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="process/BaseProcess.py">process/BaseProcess.py<a class="anchor-link" href="#process/BaseProcess.py">&#182;</a></h1><hr>
-
-<pre><code>This file creates the abstract classes and components to create Process Dialogs for user defined analysis parameters.
-
-</code></pre>
-<h2 id="class-WindowSelector(QWidget):">class WindowSelector(QWidget):<a class="anchor-link" href="#class-WindowSelector(QWidget):">&#182;</a></h2>
-<pre><code>Widget for selecting a Window to be referred to by a process
-Signals
-    -valueChanged: emitted when a window is selected by the user
+<h1 id="roi.py">roi.py<a class="anchor-link" href="#roi.py">&#182;</a></h1><hr>
+<h2 id="class-ROI(QWidget):">class ROI(QWidget):<a class="anchor-link" href="#class-ROI(QWidget):">&#182;</a></h2>
+<pre><code>Base Region of Interest class on Windows, acts as Freehand. Comprised of a QPainterPath and QGraphicsPathItem to display a colored region of interest on the window frame.  ROI's can be linked to other ROIs, translated or highlighted by color.
 
 </code></pre>
-<h2 id="class-FileSelector(QWidget):">class FileSelector(QWidget):<a class="anchor-link" href="#class-FileSelector(QWidget):">&#182;</a></h2>
-<pre><code>Widget that opens a dialog to allow the user to select a file
-Signals
-    -valueChanged: emitted when a file is selected by the user
+<blockquote><h3 id="Attributes:">Attributes:<a class="anchor-link" href="#Attributes:">&#182;</a></h3>
+<pre><code>    -type: string specifying type, used to export and import ROIs {freehand, line, rectangle}
+    -window: the window object this ROI belongs to
+    -path: QPainterPath item representing ROI
+    -pathitem: QGraphicsPathItem used to draw the ROI on the window
+    -color: color of the ROI shape, used for roi and trace
+    -linkedROIs: list of ROIs that translate with this ROI
+    -beingDragged: boolean value whether the user is dragging this ROI
+    -mouseIsOver: boolean value whether the user is hovering over this ROI
 
 </code></pre>
-<h2 id="class-SliderLabel(QWidget):">class SliderLabel(QWidget):<a class="anchor-link" href="#class-SliderLabel(QWidget):">&#182;</a></h2>
-<pre><code>Widget instance of QSpinBox with visible Label next to it.
-Signals
-    -valueChanged: emitted when the slider is moved
-Functions:
+<h3 id="Signals">Signals<a class="anchor-link" href="#Signals">&#182;</a></h3>
+<pre><code>    -translated: emitted when the ROI is being moved
+    -translate_done: emitted when the translation is finished
+    -deleteSignal: emitted when the user removes the ROI
+    -plotSignal: emitted when the ROI is plotted
+
+
 </code></pre>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">decimals</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="o">-</span><span class="n">decimals</span> <span class="n">represents</span> <span class="n">resolution</span><span class="o">.</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">integers</span><span class="p">,</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">tens</span> <span class="n">place</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span>
-    <span class="k">def</span> <span class="nf">setRange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">minn</span><span class="p">,</span><span class="n">maxx</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setMinimum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">minn</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setMaximum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">maxx</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setSingleStep</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+<h4 id="def-init(self,window,x,y):">def <strong>init</strong>(self,window,x,y):<a class="anchor-link" href="#def-init(self,window,x,y):">&#182;</a></h4>
+<pre><code>Create an ROI object in the window at point (x, y).
+Use roi.extend(x, y) to give the roi shape
+
+</code></pre>
+<h4 id="def-extend(self,x,y):">def extend(self,x,y):<a class="anchor-link" href="#def-extend(self,x,y):">&#182;</a></h4>
+<pre><code>Adds the point (x, y) to the pathitem that represents this ROI
+NOTE: This varies depending on the type of ROI
+
+</code></pre>
+<h4 id="def-deleteCurrentROI(self):">def deleteCurrentROI(self):<a class="anchor-link" href="#def-deleteCurrentROI(self):">&#182;</a></h4>
+<pre><code>Removes the ROI if it is the current ROI in its parent window.
+
+</code></pre>
+<h4 id="def-getTraceWindow(self):">def getTraceWindow(self):<a class="anchor-link" href="#def-getTraceWindow(self):">&#182;</a></h4>
+<pre><code>Return the Trace Window that was used to plot this ROI
+
+</code></pre>
+<h4 id="def-delete(self):">def delete(self):<a class="anchor-link" href="#def-delete(self):">&#182;</a></h4>
+<pre><code>Attempts to unlink all ROIs linked to this one, remove this ROI from the current window, remove the pathitem from the view, and unlink the traceWindow indexChanged signal from the Window
+
+</code></pre>
+<h4 id="def-getPoints(self):">def getPoints(self):<a class="anchor-link" href="#def-getPoints(self):">&#182;</a></h4>
+<pre><code>Return the points that comprise the path of the roi. Declare self.minn as the minimum (x, y) bound of the ROI (aka the top left corner of the boundingRect)
+
+</code></pre>
+<h4 id="def-getArea(self):">def getArea(self):<a class="anchor-link" href="#def-getArea(self):">&#182;</a></h4>
+<pre><code>Return the number of pixels inside of the ROI
+
+</code></pre>
+<h4 id="def-plot(self):">def plot(self):<a class="anchor-link" href="#def-plot(self):">&#182;</a></h4>
+<pre><code>Run roiPlot(self) to plot this ROI trace in the currentTrace, emit the plotSignal. This links the traceWindow mouse index with the index of the ROIs window
+
+</code></pre>
+<h4 id="def-unplot(self):">def unplot(self):<a class="anchor-link" href="#def-unplot(self):">&#182;</a></h4>
+<pre><code>Unlink and remove this ROI trace from its traceWindow.
+
+</code></pre>
+<h4 id="def-copy(self):">def copy(self):<a class="anchor-link" href="#def-copy(self):">&#182;</a></h4>
+<pre><code>Set the global clipboard value to self, for pasting this ROI in other windows
+
+</code></pre>
+<h4 id="def-save(self,filename):">def save(self,filename):<a class="anchor-link" href="#def-save(self,filename):">&#182;</a></h4>
+<pre><code>Save ALL ROIs in the currentWindow to a file, in an easily readable format
+Parameters:
+    -filename: the location of the file to save ROIs to, in the following format
+</code></pre>
+<div class="highlight"><pre><span></span><span class="n">type1</span>           <span class="c1"># type starts new ROI</span>
+        <span class="n">X1</span>    <span class="n">Y1</span>        <span class="c1"># points saved as XY coordinates separated by a tab</span>
+        <span class="n">X2</span>    <span class="n">Y2</span>
+        <span class="o">...</span>
+        <span class="n">XN</span>    <span class="n">YN</span>
+                        <span class="c1"># newline between ROIs</span>
+        <span class="n">type2</span>
+        <span class="n">X1</span>    <span class="n">X2</span>
+        <span class="o">...</span>
 </pre></div>
-<h2 id="class-SliderLabelOdd(SliderLabel):">class SliderLabelOdd(SliderLabel):<a class="anchor-link" href="#class-SliderLabelOdd(SliderLabel):">&#182;</a></h2>
-<pre><code>SliderLabel subclass that forces the user to pick an odd value
-refer to SliderLabel
+<h4 id="def-changeColor(self):">def changeColor(self):<a class="anchor-link" href="#def-changeColor(self):">&#182;</a></h4>
+<pre><code>Open the color dialog to allow the user to change the color of this ROI
 
 </code></pre>
-<h2 id="class-CheckBox(QCheckBox):">class CheckBox(QCheckBox):<a class="anchor-link" href="#class-CheckBox(QCheckBox):">&#182;</a></h2>
-<pre><code>Overwritten QCheckBox class to give it the 'setValue' method
+<h4 id="def-colorSelected(self,-color):">def colorSelected(self, color):<a class="anchor-link" href="#def-colorSelected(self,-color):">&#182;</a></h4>
+<pre><code>Apply the selected color to the ROI and its Trace
+Parameters:
+    -color: QColor object, usually a result of QColorDialog
+
 </code></pre>
-<blockquote><h4 id="def-setValue(self,value):">def setValue(self,value):<a class="anchor-link" href="#def-setValue(self,value):">&#182;</a></h4>
-<pre><code>Set the value of the Checkbox to be True or False. Runs setChecked(value)</code></pre>
+<h4 id="def-contains(self,x,y):">def contains(self,x,y):<a class="anchor-link" href="#def-contains(self,x,y):">&#182;</a></h4>
+<pre><code>Return whether the ROIs path contains point (x, y)
+
+</code></pre>
+<h4 id="def-getMask(self):">def getMask(self):<a class="anchor-link" href="#def-getMask(self):">&#182;</a></h4>
+<pre><code>Assembles the mask used to get the ROI Trace. WARNING: RETURNS NOTHING
+
+</code></pre>
+<h4 id="def-getTrace(self,bounds=None,pts=None):">def getTrace(self,bounds=None,pts=None):<a class="anchor-link" href="#def-getTrace(self,bounds=None,pts=None):">&#182;</a></h4>
+<pre><code>Uses the mask to calculate the average trace of all the pixels within the ROI for each frame of the windows image
+Parameters:
+    -bounds: [min, max] representing the frame range of the trace to calculate to quicken calculation
+    -pts: Currently unused
+
+</code></pre>
+<h4 id="def-link(self,roi):">def link(self,roi):<a class="anchor-link" href="#def-link(self,roi):">&#182;</a></h4>
+<pre><code>Appends self to roi.linkedROIs and roi to self.linkedROIs</code></pre>
 </blockquote>
-<h2 id="class-BaseDialog(QDialog):">class BaseDialog(QDialog):<a class="anchor-link" href="#class-BaseDialog(QDialog):">&#182;</a></h2>
-<pre><code>Dialog for users to manipulate widgets to set analysis parameters.  Items aligned in a FormLayout with cancel, ok, and a docstring displayed at the top of the dialog.
-Signals
-    -changeSignal: emitted when any item widget value in the BaseDialog is changed
-    -closeSignal: emitted when the base dialog box is closed, whether accepted or cancelled
+<h2 id="class-ROI_line(ROI):">class ROI_line(ROI):<a class="anchor-link" href="#class-ROI_line(ROI):">&#182;</a></h2>
+<pre><code>Line ROI for kymograph analysis of movies. Used for kymographs. Drag near endpoints to resize the line.
 
 </code></pre>
-<blockquote><h4 id="def-__init__(self,items,title,docstring):">def __init__(self,items,title,docstring):<a class="anchor-link" href="#def-__init__(self,items,title,docstring):">&#182;</a></h4>
-<pre><code>Parameters:
-    -items: list of dicts specifying widgets. Each dict comprised of
-        {'string': 'Label Text',
-         'object': widgetItem,
-         'name': 'name used to get item value'}
-    -title: Title displayed at the top of the dialog window
-    -docstring: Information to display above the widget items</code></pre>
+<blockquote><h4 id="def-createKymograph(self,mn):">def createKymograph(self,mn):<a class="anchor-link" href="#def-createKymograph(self,mn):">&#182;</a></h4>
+<pre><code>Plot the kymograph of the ROI Line as a 2D image in a new window. Updates automatically on ROI drag</code></pre>
 </blockquote>
-<h2 id="class-BaseProcess(object):">class BaseProcess(object):<a class="anchor-link" href="#class-BaseProcess(object):">&#182;</a></h2>
-<pre><code>Abstract class provided for process creation. Contains methods for displaying a BaseDialog of items, manipulating an image stack, and outputting a new window with the applied changes.  IMPORTANT: BaseProcess requires the user to have a currentWindow selected. For processes that don't need initial windows, refer to BaseProcess_noPriorWindow
+<h2 id="class-ROI_rectangle(ROI):">class ROI_rectangle(ROI):<a class="anchor-link" href="#class-ROI_rectangle(ROI):">&#182;</a></h2>
+<pre><code>Rectangle ROI object used for box analysis with simple edges. Select a region of interest, drag corners to resize.
 
 </code></pre>
-<blockquote><h4 id="def-gui(self):">def gui(self):<a class="anchor-link" href="#def-gui(self):">&#182;</a></h4>
-<pre><code>Create a gui to display the widgets for analysis arguments. General template:
-</code></pre>
-<div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">gui_reset</span><span class="p">()</span>
-    <span class="c1">#... build self.items list</span>
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">gui</span><span class="p">()</span> <span class="c1"># this shows the gui dialog</span>
-</pre></div>
-<h4 id="def-call(self,-*args):">def <strong>call</strong>(self, *args):<a class="anchor-link" href="#def-call(self,-*args):">&#182;</a></h4>
-<pre><code>Called when BaseDialog is accepted. self.items widgets are passed in by (name, value) pairs, parameter names must match names stated in gui function.
-NOTE:
-    -To create a new window with manipulated image, use this template:
-</code></pre>
-<div class="highlight"><pre><span></span><span class="c1">#... get widget values and apply manipulation</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">newtif</span> <span class="o">=</span> <span class="n">resulting</span> <span class="n">image</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">newname</span> <span class="o">=</span> <span class="s2">&quot;Name of Image after manipulation&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;command as string used to create window&quot;</span> <span class="p">(</span><span class="n">Optional</span><span class="p">:</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">scripts</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
-</pre></div>
-<h4 id="def-getValue(self,name):">def getValue(self,name):<a class="anchor-link" href="#def-getValue(self,name):">&#182;</a></h4>
-<pre><code>Get the value of a widget item "name" in the self.items dict</code></pre>
+<blockquote><h4 id="def-crop(self):">def crop(self):<a class="anchor-link" href="#def-crop(self):">&#182;</a></h4>
+<pre><code>Create a new Window with the cropped area of the image stack. Crops along the X and Y axis, maintaining frames</code></pre>
 </blockquote>
-<h2 id="class-BaseProcess_noPriorWindow(BaseProcess):">class BaseProcess_noPriorWindow(BaseProcess):<a class="anchor-link" href="#class-BaseProcess_noPriorWindow(BaseProcess):">&#182;</a></h2>
-<pre><code>Abstract class of type BaseProcess that ignores g.m.currentWindow</code></pre>
+<h4 id="def-makeROI(kind,pts,window=None):">def makeROI(kind,pts,window=None):<a class="anchor-link" href="#def-makeROI(kind,pts,window=None):">&#182;</a></h4>
+<pre><code>Creates an ROI object and optionally adds it to a window. Returns the ROI that is created
+Parameters:
+    -kind: represents ROI type attribute. {freehand, line, rectangle}
+    -pts: list of (x, y) coordinates used to draw the ROI.
+        Four corners for rect, start and end for line, or list of points for freehand
+    -window: optional argument to add the ROI to a specific window. default is the currentWindow</code></pre>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
     </div>
   </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>BaseProcess</title>
+<title>Untitled</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -176,91 +176,133 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="process/BaseProcess.py">process/BaseProcess.py<a class="anchor-link" href="#process/BaseProcess.py">&#182;</a></h1><hr>
-
-<pre><code>This file creates the abstract classes and components to create Process Dialogs for user defined analysis parameters.
-
+<h1 id="Flika-Heirarchy">Flika Heirarchy<a class="anchor-link" href="#Flika-Heirarchy">&#182;</a></h1><h4 id="flika.bat-/-flika.sh">flika.bat / flika.sh<a class="anchor-link" href="#flika.bat-/-flika.sh">&#182;</a></h4>
+<pre><code>Batch or shell file to run Flika on Windows
 </code></pre>
-<h2 id="class-WindowSelector(QWidget):">class WindowSelector(QWidget):<a class="anchor-link" href="#class-WindowSelector(QWidget):">&#182;</a></h2>
-<pre><code>Widget for selecting a Window to be referred to by a process
-Signals
-    -valueChanged: emitted when a window is selected by the user
-
+<h4 id="flika.py">flika.py<a class="anchor-link" href="#flika.py">&#182;</a></h4>
+<pre><code>Initialization of Flika main UI and widget signals
 </code></pre>
-<h2 id="class-FileSelector(QWidget):">class FileSelector(QWidget):<a class="anchor-link" href="#class-FileSelector(QWidget):">&#182;</a></h2>
-<pre><code>Widget that opens a dialog to allow the user to select a file
-Signals
-    -valueChanged: emitted when a file is selected by the user
-
+<h4 id="global_vars.py">global_vars.py<a class="anchor-link" href="#global_vars.py">&#182;</a></h4>
+<pre><code>Encapsulate all variables (Windows, data, functions) in a single global object 'g'       
 </code></pre>
-<h2 id="class-SliderLabel(QWidget):">class SliderLabel(QWidget):<a class="anchor-link" href="#class-SliderLabel(QWidget):">&#182;</a></h2>
-<pre><code>Widget instance of QSpinBox with visible Label next to it.
-Signals
-    -valueChanged: emitted when the slider is moved
-Functions:
-</code></pre>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">decimals</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="o">-</span><span class="n">decimals</span> <span class="n">represents</span> <span class="n">resolution</span><span class="o">.</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">integers</span><span class="p">,</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">tens</span> <span class="n">place</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span>
-    <span class="k">def</span> <span class="nf">setRange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">minn</span><span class="p">,</span><span class="n">maxx</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setMinimum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">minn</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setMaximum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">maxx</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setSingleStep</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Declares attributes of Global Object:</span>
+<span class="sd">        *m: Flika Main UI Window</span>
+<span class="sd">        *m.currentWindow: the current Image Stack Window highlighted in green</span>
+<span class="sd">        *m.currentTrace: the current Trace Window highlighted in green</span>
+<span class="sd">        *m.settings: Settings class instance, saves all Flika information on close</span>
+<span class="sd">        *m.clipboard: empty instance to store copied ROIs</span>
+<span class="sd">        *m.windows: list of Image Stack Window instances</span>
+<span class="sd">        *m.traceWindows: list of Trace Window instances</span>
+<span class="sd">        *m.dialogs: list of dialogs created by processes</span>
+<span class="sd">    &#39;&#39;&#39;</span>
 </pre></div>
-<h2 id="class-SliderLabelOdd(SliderLabel):">class SliderLabelOdd(SliderLabel):<a class="anchor-link" href="#class-SliderLabelOdd(SliderLabel):">&#182;</a></h2>
-<pre><code>SliderLabel subclass that forces the user to pick an odd value
-refer to SliderLabel
+
+<pre><code>g.m.settings:
+    Instance Object to store recent files, window positions, and any other necessary information.  Settings acts like a dictionary of values and items are accessed using the [] syntax. (eg g.m.settings['internal_data_type'])
 
 </code></pre>
-<h2 id="class-CheckBox(QCheckBox):">class CheckBox(QCheckBox):<a class="anchor-link" href="#class-CheckBox(QCheckBox):">&#182;</a></h2>
-<pre><code>Overwritten QCheckBox class to give it the 'setValue' method
-</code></pre>
-<blockquote><h4 id="def-setValue(self,value):">def setValue(self,value):<a class="anchor-link" href="#def-setValue(self,value):">&#182;</a></h4>
-<pre><code>Set the value of the Checkbox to be True or False. Runs setChecked(value)</code></pre>
-</blockquote>
-<h2 id="class-BaseDialog(QDialog):">class BaseDialog(QDialog):<a class="anchor-link" href="#class-BaseDialog(QDialog):">&#182;</a></h2>
-<pre><code>Dialog for users to manipulate widgets to set analysis parameters.  Items aligned in a FormLayout with cancel, ok, and a docstring displayed at the top of the dialog.
-Signals
-    -changeSignal: emitted when any item widget value in the BaseDialog is changed
-    -closeSignal: emitted when the base dialog box is closed, whether accepted or cancelled
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="n">Save</span> <span class="n">compressed</span> <span class="n">data</span> <span class="nb">dict</span> <span class="n">to</span> <span class="n">FLIKA</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">p</span> <span class="nb">file</span>
 
-</code></pre>
-<blockquote><h4 id="def-__init__(self,items,title,docstring):">def __init__(self,items,title,docstring):<a class="anchor-link" href="#def-__init__(self,items,title,docstring):">&#182;</a></h4>
-<pre><code>Parameters:
-    -items: list of dicts specifying widgets. Each dict comprised of
-        {'string': 'Label Text',
-         'object': widgetItem,
-         'name': 'name used to get item value'}
-    -title: Title displayed at the top of the dialog window
-    -docstring: Information to display above the widget items</code></pre>
-</blockquote>
-<h2 id="class-BaseProcess(object):">class BaseProcess(object):<a class="anchor-link" href="#class-BaseProcess(object):">&#182;</a></h2>
-<pre><code>Abstract class provided for process creation. Contains methods for displaying a BaseDialog of items, manipulating an image stack, and outputting a new window with the applied changes.  IMPORTANT: BaseProcess requires the user to have a currentWindow selected. For processes that don't need initial windows, refer to BaseProcess_noPriorWindow
-
-</code></pre>
-<blockquote><h4 id="def-gui(self):">def gui(self):<a class="anchor-link" href="#def-gui(self):">&#182;</a></h4>
-<pre><code>Create a gui to display the widgets for analysis arguments. General template:
-</code></pre>
-<div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">gui_reset</span><span class="p">()</span>
-    <span class="c1">#... build self.items list</span>
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">gui</span><span class="p">()</span> <span class="c1"># this shows the gui dialog</span>
+        <span class="k">def</span> <span class="nf">gui</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="n">Load</span> <span class="n">the</span> <span class="n">dialog</span> <span class="n">to</span> <span class="n">manually</span> <span class="n">change</span> <span class="n">certain</span> <span class="n">settings</span>
 </pre></div>
-<h4 id="def-call(self,-*args):">def <strong>call</strong>(self, *args):<a class="anchor-link" href="#def-call(self,-*args):">&#182;</a></h4>
-<pre><code>Called when BaseDialog is accepted. self.items widgets are passed in by (name, value) pairs, parameter names must match names stated in gui function.
-NOTE:
-    -To create a new window with manipulated image, use this template:
+<h4 id="tifffile.py">tifffile.py<a class="anchor-link" href="#tifffile.py">&#182;</a></h4>
+<pre><code>Read and write image data from and to TIFF files. Documentation in file.
+Copyright (c) 2008-2013, Christoph Gohlke
+Copyright (c) 2008-2013, The Regents of the University of California
+
+
 </code></pre>
-<div class="highlight"><pre><span></span><span class="c1">#... get widget values and apply manipulation</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">newtif</span> <span class="o">=</span> <span class="n">resulting</span> <span class="n">image</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">newname</span> <span class="o">=</span> <span class="s2">&quot;Name of Image after manipulation&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;command as string used to create window&quot;</span> <span class="p">(</span><span class="n">Optional</span><span class="p">:</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">scripts</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
-</pre></div>
-<h4 id="def-getValue(self,name):">def getValue(self,name):<a class="anchor-link" href="#def-getValue(self,name):">&#182;</a></h4>
-<pre><code>Get the value of a widget item "name" in the self.items dict</code></pre>
+<h4 id="process/binary.py">process/binary.py<a class="anchor-link" href="#process/binary.py">&#182;</a></h4>
+<pre><code>def convert2uint8(tif):
+    Apply scaling to tif to create a valid uint8 image array. Saves memory
+
+Class Instances for Image Processing by producing binary images:
+    Instance objects expand BaseProcess. Refer to BaseProcess for useful methods. Call these instance objects with parameters to apply the process to the currentWindow
+
+    -threshold(value,darkBackground=False)
+    -adaptive_threshold(value,block_size,darkBackground=False)
+    -canny_edge_detector(sigma)
+    -logically_combine(window1, window2,operator)
+    -remove_small_blobs(rank,value)
+    -binary_dilation(rank,connectivity,iterations)
+    -binary_erosion(rank,connectivity,iterations)
+
+</code></pre>
+<h4 id="process/filters.py">process/filters.py<a class="anchor-link" href="#process/filters.py">&#182;</a></h4>
+<pre><code>Class Instances for Image Processing through different filtering methods:
+    Instance objects expand BaseProcess. Refer to BaseProcess for useful methods. Call these instance objects with parameters to apply the process to the currentWindow
+
+    -gaussian_blur(sigma)
+    -butterworth_filter(filter_order,low,high)
+    -mean_filter(nFrames)
+    -median_filter(nFrames)
+    -fourier_filter(frame_rate, low, high, loglogPreview)
+    -difference_filter()
+    -boxcar_differential_filter(minNframes,maxNframes)
+    -wavelet_filter(low,high)
+    -bilateral_filter(soft, beta, width, stoptol, maxiter)
+
+</code></pre>
+<h4 id="process/math_.py">process/math_.py<a class="anchor-link" href="#process/math_.py">&#182;</a></h4>
+<pre><code>Class Instances for Manipulating Images Through mathematical functions:
+    Instance objects expand BaseProcess. Refer to BaseProcess for useful methods. Call these instance objects with parameters to apply the process to the currentWindow
+
+    -subtract(value)
+    -subtract_trace()
+    -divide_trace()
+    -multiply(value)
+    -power(value)
+    -ratio(first_frame,nFrames,ratio_type)
+    -absolute_value()
+
+</code></pre>
+<h4 id="process/measure.py">process/measure.py<a class="anchor-link" href="#process/measure.py">&#182;</a></h4>
+<pre><code>Class Instances for measuring distances in Trace Windows:
+    Instance objects expand BaseProcess. Refer to BaseProcess for useful methods. Call these instance objects with parameters to apply the process to the currentWindow
+
+    -measure: Unique process for trace distance analysis
+        def gui(self): display the UI for logging measure data
+
+</code></pre>
+<h4 id="process/overlay.py">process/overlay.py<a class="anchor-link" href="#process/overlay.py">&#182;</a></h4>
+<pre><code>Class Instances for Image Processing with an overlay:
+    Instance objects expand BaseProcess. Refer to BaseProcess for useful methods. Call these instance objects with parameters to apply the process to the currentWindow
+
+    -time_stamp(framerate,show=True)
+    -background(background_window, data_window, opacity,show)
+    -scale_Bar(width_microns, width_pixels, font_size, color, background,location,show=True)
+
+</code></pre>
+<h4 id="process/roi.py">process/roi.py<a class="anchor-link" href="#process/roi.py">&#182;</a></h4>
+<pre><code>Class Instances for Image Processing:
+    Instance objects expand BaseProcess. Refer to BaseProcess for useful methods. Call these instance objects with parameters to apply the process to the currentWindow
+
+    -set_value(value,firstFrame,lastFrame,restrictToROI=False, restrictToOutside=False)
+
+</code></pre>
+<h4 id="process/stacks.py">process/stacks.py<a class="anchor-link" href="#process/stacks.py">&#182;</a></h4>
+<pre><code>Class Instances for Image Processing by manipulating image stacks along dimensions:
+    Instance objects expand BaseProcess. Refer to BaseProcess for useful methods. Call these instance objects with parameters to apply the process to the currentWindow
+
+    -deinterleave(nChannels)
+    -pixel_binning(nPixels)
+    -frame_binning(nFrames)
+    -resize(factor)
+    -trim(firstFrame,lastFrame,increment)
+    -zproject(firstFrame,lastFrame,projection_type)
+    -image_calculator(window1, window2, operation)
+
+</code></pre>
+<h4 id="dependency_check.py">dependency_check.py<a class="anchor-link" href="#dependency_check.py">&#182;</a></h4><blockquote><p>def is_installed(dep):
+    Returns whether a dependency is installed on the machine</p>
+<p>def install(dep):
+    Try to install a dependency by name (eg pyqtgraph)</p>
+<p>def check_dependencies(*args):
+    Check for python dependencies, installing any that are missing</p>
 </blockquote>
-<h2 id="class-BaseProcess_noPriorWindow(BaseProcess):">class BaseProcess_noPriorWindow(BaseProcess):<a class="anchor-link" href="#class-BaseProcess_noPriorWindow(BaseProcess):">&#182;</a></h2>
-<pre><code>Abstract class of type BaseProcess that ignores g.m.currentWindow</code></pre>
 
 </div>
 </div>

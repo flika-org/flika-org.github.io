@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>BaseProcess</title>
+<title>Untitled1</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -176,91 +176,49 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="process/BaseProcess.py">process/BaseProcess.py<a class="anchor-link" href="#process/BaseProcess.py">&#182;</a></h1><hr>
+<h1 id="trace.py">trace.py<a class="anchor-link" href="#trace.py">&#182;</a></h1><hr>
 
-<pre><code>This file creates the abstract classes and components to create Process Dialogs for user defined analysis parameters.
-
+<pre><code>This file creates the TraceFig Window that is used to visualize ROI traces.
 </code></pre>
-<h2 id="class-WindowSelector(QWidget):">class WindowSelector(QWidget):<a class="anchor-link" href="#class-WindowSelector(QWidget):">&#182;</a></h2>
-<pre><code>Widget for selecting a Window to be referred to by a process
-Signals
-    -valueChanged: emitted when a window is selected by the user
+<h2 id="class-TraceFig(QWidget):">class TraceFig(QWidget):<a class="anchor-link" href="#class-TraceFig(QWidget):">&#182;</a></h2>
+<pre><code>Trace Window to visualize average pixel values over time.  When a TraceFig is created, it is automatically set to g.m.currentTrace. Trace Windows are used to plot traces from ROIs for visual comparison and analysis. The mouse X-index position is automatically linked to the Window frame index
 
 </code></pre>
-<h2 id="class-FileSelector(QWidget):">class FileSelector(QWidget):<a class="anchor-link" href="#class-FileSelector(QWidget):">&#182;</a></h2>
-<pre><code>Widget that opens a dialog to allow the user to select a file
-Signals
-    -valueChanged: emitted when a file is selected by the user
+<blockquote><h3 id="Attributes:">Attributes:<a class="anchor-link" href="#Attributes:">&#182;</a></h3>
+<pre><code>-p1: pyqtgraph PlotWidget used to plot the zoomed in range selected from the full trace
+-p2: pyqtgraph PlotWidget below p1 used to plot the whole trace. A LinearRegionItem is provided to previewa selected range
+-region: pyqtgraph LinearRegionItem used to select a region of the whole trace from p2
+-rois: list of the ROIs that are plotted in the traceWindow, as a list of dictionaries [{'roi': ROI, 'p1trace': PlotDataItem, 'p2trace': PlotDataItem, 'toBeRedrawn': Boolean, 'toBeRedrawnFull': Boolean}, ...]
+-measure: Measure instance used to measure distances
 
 </code></pre>
-<h2 id="class-SliderLabel(QWidget):">class SliderLabel(QWidget):<a class="anchor-link" href="#class-SliderLabel(QWidget):">&#182;</a></h2>
-<pre><code>Widget instance of QSpinBox with visible Label next to it.
-Signals
-    -valueChanged: emitted when the slider is moved
-Functions:
-</code></pre>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">decimals</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="o">-</span><span class="n">decimals</span> <span class="n">represents</span> <span class="n">resolution</span><span class="o">.</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">integers</span><span class="p">,</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">tens</span> <span class="n">place</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span>
-    <span class="k">def</span> <span class="nf">setRange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">minn</span><span class="p">,</span><span class="n">maxx</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setMinimum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">minn</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setMaximum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">maxx</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setSingleStep</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
-</pre></div>
-<h2 id="class-SliderLabelOdd(SliderLabel):">class SliderLabelOdd(SliderLabel):<a class="anchor-link" href="#class-SliderLabelOdd(SliderLabel):">&#182;</a></h2>
-<pre><code>SliderLabel subclass that forces the user to pick an odd value
-refer to SliderLabel
+<h3 id="Signals:">Signals:<a class="anchor-link" href="#Signals:">&#182;</a></h3>
+<pre><code>-indexChanged: emits the x-index of the mouse when the user moves the mouse over the traceWindow
+-finishedDrawingSignal: emitted when the traceWindow has finished plotting all its traces
+-keyPressSignal: emits the QEvent that is created when the user presses any key on the traceWindow
 
 </code></pre>
-<h2 id="class-CheckBox(QCheckBox):">class CheckBox(QCheckBox):<a class="anchor-link" href="#class-CheckBox(QCheckBox):">&#182;</a></h2>
-<pre><code>Overwritten QCheckBox class to give it the 'setValue' method
+<h4 id="def-setCurrentTraceWindow(self):">def setCurrentTraceWindow(self):<a class="anchor-link" href="#def-setCurrentTraceWindow(self):">&#182;</a></h4>
+<pre><code>    If multipleTraceWindows setting is enabled, this is useful for selecting a traceWindow as the currentTrace
+
 </code></pre>
-<blockquote><h4 id="def-setValue(self,value):">def setValue(self,value):<a class="anchor-link" href="#def-setValue(self,value):">&#182;</a></h4>
-<pre><code>Set the value of the Checkbox to be True or False. Runs setChecked(value)</code></pre>
+<h4 id="def-get_roi_index(self,roi):">def get_roi_index(self,roi):<a class="anchor-link" href="#def-get_roi_index(self,roi):">&#182;</a></h4>
+<pre><code>    Return the index of the ROI in self.rois that resulted from the specified ROI object
+
+</code></pre>
+<h4 id="def-addROI(self,roi):">def addROI(self,roi):<a class="anchor-link" href="#def-addROI(self,roi):">&#182;</a></h4>
+<pre><code>    Plot the average trace of the specified ROI in the traceWindow
+
+</code></pre>
+<h4 id="def-removeROI(self,roi):">def removeROI(self,roi):<a class="anchor-link" href="#def-removeROI(self,roi):">&#182;</a></h4>
+<pre><code>    Find and remove the average trace PlotDataItem that was created from the ROI from this traceWindow. If no traces remain, close the TraceWindow
+
+</code></pre>
+<h4 id="def-hasROI(self,roi):">def hasROI(self,roi):<a class="anchor-link" href="#def-hasROI(self,roi):">&#182;</a></h4>
+<pre><code>    Return whether or not the ROI trace was plotted in this traceWindow</code></pre>
 </blockquote>
-<h2 id="class-BaseDialog(QDialog):">class BaseDialog(QDialog):<a class="anchor-link" href="#class-BaseDialog(QDialog):">&#182;</a></h2>
-<pre><code>Dialog for users to manipulate widgets to set analysis parameters.  Items aligned in a FormLayout with cancel, ok, and a docstring displayed at the top of the dialog.
-Signals
-    -changeSignal: emitted when any item widget value in the BaseDialog is changed
-    -closeSignal: emitted when the base dialog box is closed, whether accepted or cancelled
-
-</code></pre>
-<blockquote><h4 id="def-__init__(self,items,title,docstring):">def __init__(self,items,title,docstring):<a class="anchor-link" href="#def-__init__(self,items,title,docstring):">&#182;</a></h4>
-<pre><code>Parameters:
-    -items: list of dicts specifying widgets. Each dict comprised of
-        {'string': 'Label Text',
-         'object': widgetItem,
-         'name': 'name used to get item value'}
-    -title: Title displayed at the top of the dialog window
-    -docstring: Information to display above the widget items</code></pre>
-</blockquote>
-<h2 id="class-BaseProcess(object):">class BaseProcess(object):<a class="anchor-link" href="#class-BaseProcess(object):">&#182;</a></h2>
-<pre><code>Abstract class provided for process creation. Contains methods for displaying a BaseDialog of items, manipulating an image stack, and outputting a new window with the applied changes.  IMPORTANT: BaseProcess requires the user to have a currentWindow selected. For processes that don't need initial windows, refer to BaseProcess_noPriorWindow
-
-</code></pre>
-<blockquote><h4 id="def-gui(self):">def gui(self):<a class="anchor-link" href="#def-gui(self):">&#182;</a></h4>
-<pre><code>Create a gui to display the widgets for analysis arguments. General template:
-</code></pre>
-<div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">gui_reset</span><span class="p">()</span>
-    <span class="c1">#... build self.items list</span>
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">gui</span><span class="p">()</span> <span class="c1"># this shows the gui dialog</span>
-</pre></div>
-<h4 id="def-call(self,-*args):">def <strong>call</strong>(self, *args):<a class="anchor-link" href="#def-call(self,-*args):">&#182;</a></h4>
-<pre><code>Called when BaseDialog is accepted. self.items widgets are passed in by (name, value) pairs, parameter names must match names stated in gui function.
-NOTE:
-    -To create a new window with manipulated image, use this template:
-</code></pre>
-<div class="highlight"><pre><span></span><span class="c1">#... get widget values and apply manipulation</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">newtif</span> <span class="o">=</span> <span class="n">resulting</span> <span class="n">image</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">newname</span> <span class="o">=</span> <span class="s2">&quot;Name of Image after manipulation&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;command as string used to create window&quot;</span> <span class="p">(</span><span class="n">Optional</span><span class="p">:</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">scripts</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
-</pre></div>
-<h4 id="def-getValue(self,name):">def getValue(self,name):<a class="anchor-link" href="#def-getValue(self,name):">&#182;</a></h4>
-<pre><code>Get the value of a widget item "name" in the self.items dict</code></pre>
-</blockquote>
-<h2 id="class-BaseProcess_noPriorWindow(BaseProcess):">class BaseProcess_noPriorWindow(BaseProcess):<a class="anchor-link" href="#class-BaseProcess_noPriorWindow(BaseProcess):">&#182;</a></h2>
-<pre><code>Abstract class of type BaseProcess that ignores g.m.currentWindow</code></pre>
+<h3 id="def-roiPlot(roi):">def roiPlot(roi):<a class="anchor-link" href="#def-roiPlot(roi):">&#182;</a></h3>
+<pre><code>Plot the ROI in the currentTrace window. If multipleTraceWindows is enabled or no currentTrace exists, create a new TraceWindow</code></pre>
 
 </div>
 </div>
