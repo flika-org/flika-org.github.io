@@ -54,6 +54,7 @@ iframe{
     }
     iframe{
     	margin-left:10%;
+    	width:100%;
     }
     #sticky{
     	display:none;
