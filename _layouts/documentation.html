@@ -32,11 +32,11 @@ docs:
           {% for category in page.docs %}
             <li>
               <p><strong>{{ category.top-level }}</strong></p>
-              <ul>
+              <!--ul>
                 {% for tutorial in category.nested-docs %}
                   <li><a href="/docs/{{ tutorial.site }}">{{ tutorial.nested }}</a></li>
                 {% endfor %}
-              </ul>
+              </ul-->
             </li>
           {% endfor %}
         </ul>
