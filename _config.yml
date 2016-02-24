@@ -18,3 +18,11 @@ docs:
         site: BaseProcess.html
       - nested: Other
         site: flika.html
+  - top-level: Developer
+    nested-docs:
+      - nested: How To Make A Plugin
+        site: HowToMakeAPlugin.html
+      - nested: How Flika Reads Plugins
+        site: HowFlikaReadsPlugins.html
+      - nested: Tutorial Creation
+        site: TutorialCreation.html
