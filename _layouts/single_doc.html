@@ -1,9 +1,15 @@
 ---
 layout: documentation
 ---
-<body>
-<div class="content">
-  <iframe src="/docs_html/{{ page.filename }}" onload="resizeIframe(this)"></iframe>
-</div>
-</body>
 
+<body>
+  <div class="content">
+    <iframe src="/docs_html/{{ page.filename }}" onload="resizeIframe(this)"></iframe>
+  </div>
+</body>
+<script type="text/javascript">
+  function resizeIframe(obj){
+     obj.style.height = 0;
+     obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  }
+</script>
