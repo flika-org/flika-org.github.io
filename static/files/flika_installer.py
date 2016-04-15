@@ -169,11 +169,13 @@ def uninstall_numpy():
 				i += 1
 			shutil.move(path, path + (i * '_old'))
 	except Exception as e:
-		print(e)
 		return False
 	return True
 
+numpy_uninstalled = False
+
 def test_numpy():
+	global numpy_uninstalled
 	if is_anaconda:
 		return True
 	loc = os.path.join(pip.locations.site_packages, 'numpy')
@@ -181,10 +183,10 @@ def test_numpy():
 		try:
 			np = __import__('numpy')
 			v = np.array(map(eval, np.__version__.split('.')[:2]))
-			if any(v < [1, 11]) or np.__config__.blas_mkl_info == {} or np.__config__.lapack_mkl_info == {}:
+			if not numpy_uninstalled and (any(v < [1, 11]) or np.__config__.blas_mkl_info == {} or np.__config__.lapack_mkl_info == {}):
 				if not uninstall_numpy():
 					raise InstallFailedException('numpy')
-				print('uninstalled')
+				numpy_uninstalled = True
 				return False
 			else:
 				return True
@@ -211,8 +213,9 @@ def test(name, fromlist=[], conda=False):
 		try:
 			__import__(name, fromlist=fromlist)
 			return True
-		except ImportError:
-			pass
+		except Exception as e:
+			if 'try recompiling' in str(e):
+				return True
 	return False
 
 if not install('PyQt4', installers=['gohlke'], fromlist=['QtCore', 'QtGui', 'uic'], conda=True):
@@ -497,7 +500,7 @@ p, li { white-space: pre-wrap; }\
 		for name in ('future', 'PIL', 'pyqtgraph', 'xmltodict', 'openpyxl', 'nd2reader'):
 			if not self.isVisible():
 				return
-			test_dependency(name)
+			test_dependency(name, installers=['pip', 'gohlke'])
 		self.progressWidget.setVisible(False)
 
 
