@@ -220,7 +220,6 @@ def test(name, fromlist=[], conda=False):
 
 if not install('PyQt4', installers=['gohlke'], fromlist=['QtCore', 'QtGui', 'uic'], conda=True):
 	print("Failed to install PyQt4 on the machine. Suggest using Anaconda installer for Python")
-	sys.exit(0)
 
 from PyQt4 import QtCore, QtGui
 
