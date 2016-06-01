@@ -28,9 +28,6 @@
 p {
 	padding-left: 15px;
 }
-#notebook li {
-	padding-bottom:10px;
-}
 
 code.highlighter-rouge{
 	border: 1px solid #ccc;
