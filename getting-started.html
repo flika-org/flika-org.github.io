@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation and Getting Started &#8212; flika 0.2.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+     
+    
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">
+  
+    
+    
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">flika 0.2.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="installation-and-getting-started">
+<h1>Installation and Getting Started<a class="headerlink" href="#installation-and-getting-started" title="Permalink to this headline">¶</a></h1>
+<p><strong>Python Versions</strong>: Python 3</p>
+<p><strong>Platforms</strong>: Windows, OSX, and Linux</p>
+<p><strong>PyPI package name</strong>: <a class="reference external" href="https://pypi.python.org/pypi/flika">flika</a></p>
+<p><strong>dependencies</strong>: <a class="reference external" href="https://pypi.python.org/pypi/numpy">numpy</a>,
+<a class="reference external" href="http://pypi.python.org/pypi/scipy">scipy</a>,
+<a class="reference external" href="http://pypi.python.org/pypi/qtpy">qtpy</a>,
+<a class="reference external" href="http://pypi.python.org/pypi/pandas">pandas</a>,
+<a class="reference external" href="http://pypi.python.org/pypi/matplotlib">matplotlib</a>,
+<a class="reference external" href="http://pypi.python.org/pypi/pyqtgraph">pyqtgraph</a>,
+<a class="reference external" href="http://pypi.python.org/pypi/scikit-image">scikit-image</a>,
+<a class="reference external" href="http://pypi.python.org/pypi/scikit-learn">scikit-learn</a>,
+<a class="reference external" href="http://pypi.python.org/pypi/ipykernel">ipykernel</a>,
+<a class="reference external" href="http://pypi.python.org/pypi/qtconsole">qtconsole</a>,
+<a class="reference external" href="http://pypi.python.org/pypi/pyopengl">pyopengl</a>,
+<a class="reference external" href="http://pypi.python.org/pypi/nd2reader">nd2reader</a>.</p>
+<div class="section" id="installation">
+<span id="getstarted"></span><span id="id1"></span><h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="install-on-windows">
+<h3>Install on Windows<a class="headerlink" href="#install-on-windows" title="Permalink to this headline">¶</a></h3>
+<p>The easiest way for people with little programming experience to install flika on
+Windows is by <a class="reference external" href="https://github.com/flika-org/flika_windows_installer/">following these instructions</a>.</p>
+<p>If you are comfortable with using a terminal (command prompt), install Python 3 and type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">flika</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-on-mac-osx">
+<h3>Install on Mac OSX<a class="headerlink" href="#install-on-mac-osx" title="Permalink to this headline">¶</a></h3>
+<p>flika requires Python 3 to run. To install Python along with most of flika&#8217;s dependencies, download <a class="reference external" href="https://www.continuum.io/downloads">Anaconda</a>. Once Python is installed open a terminal and run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">flika</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-on-linux">
+<h3>Install on Linux<a class="headerlink" href="#install-on-linux" title="Permalink to this headline">¶</a></h3>
+<p>Make sure that the &#8216;pip&#8217; command is for Python 3. Then open a terminal and run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">flika</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="starting-flika">
+<h2>Starting flika<a class="headerlink" href="#starting-flika" title="Permalink to this headline">¶</a></h2>
+<p>If flika was installed using pip, start flika by opening a terminal and typing:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">flika</span>
+</pre></div>
+</div>
+<p>If you want to access the variables inside flika with the command line, type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flika</span> <span class="k">import</span> <span class="o">*</span>
+<span class="n">start_flika</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="our-first-test-run">
+<span id="simpletest"></span><h2>Our first test run<a class="headerlink" href="#our-first-test-run" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s generate a random image and apply a gaussian blur. If you are only interested in
+flika&#8217;s gui features, go to Image-&gt;Stacks-&gt;Generate Random Image. Once the image is
+generated, apply a gaussian blur to the current window by going to Process-&gt;Filters-&gt;
+Gaussian Blur.</p>
+<p>If you want to do the same thing by code, either use the console you ran the
+<code class="docutils literal"><span class="pre">start_flika()</span></code> command in or open the Script Editor (Scripts-&gt;Script Editor) and type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">generate_random_image</span><span class="p">()</span>
+<span class="n">gaussian_blur</span><span class="p">(</span><span class="n">sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="where-to-go-next">
+<h2>Where to go next<a class="headerlink" href="#where-to-go-next" title="Permalink to this headline">¶</a></h2>
+<p>Here are a few suggestions where to go next:</p>
+<ul class="simple">
+<li><a class="reference internal" href="example/index.html#examples"><span class="std std-ref">Usages and Examples</span></a> examples of image processing using flika</li>
+<li><a class="reference internal" href="writing_plugins.html#plugins"><span class="std std-ref">Writing plugins</span></a> installing and writing plugins</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/flika_logo.png" alt="Logo"/>
+            </a></p><h3>About flika</h3>
+<p>
+  flika is an  image processing program for biologists written in Python.
+</p><h3><a href="index.html">Table Of Contents</a></h3>
+
+<ul>
+  <li><a href="index.html">Home</a></li>
+  <li><a href="contents.html">Contents</a></li>
+  <li><a href="#">Install</a></li>
+  <li><a href="example/index.html">Examples</a></li>
+  <li><a href="plugins.html">Plugins</a></li>
+  <li><a href="contributing.html">Contributing</a></li>
+  <li><a href="contact.html">Contact</a></li>
+  <li><a href="changelog.html">Changelog</a></li>
+  <li><a href="license.html">License</a></li>
+</ul><h3>Useful Links</h3>
+<ul>
+  <li><a href="https://github.com/flika-org/flika">GitHub</a></li>
+  <li><a href="https://pypi.python.org/pypi/flika">PyPI</a></li>
+  <li><a href="https://github.com/flika-org/flika/issues">Issue Tracker</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+
+
+    
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Kyle Ellefsen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+    
+
+<script type="text/javascript">
+
+// Add google analytics here
+
+</script>
+
+  </body>
+</html>
