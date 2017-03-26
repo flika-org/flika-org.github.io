@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Usages and Examples &#8212; flika 0.2.0 documentation</title>
+    <title>Module: window &#8212; flika 0.2.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -57,21 +57,29 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="usages-and-examples">
-<span id="examples"></span><h1>Usages and Examples<a class="headerlink" href="#usages-and-examples" title="Permalink to this headline">¶</a></h1>
-<p>Here is a (growing) list of examples. <a class="reference internal" href="../contact.html#contact"><span class="std std-ref">Contact</span></a> us if you
-need more examples or have questions. Also take a look at the
-<a class="reference internal" href="../contents.html#toc"><span class="std std-ref">comprehensive documentation</span></a> which contains many example
-snippets as well.  Also, <a class="reference external" href="http://stackoverflow.com/search?q=flika">flika on stackoverflow.com</a> often comes with example
-answers.</p>
-<p>For basic examples, see</p>
-<ul class="simple">
-<li><a class="reference internal" href="../getting-started.html"><span class="doc">Installation and Getting Started</span></a> for basic introductory examples</li>
-</ul>
-<p>The following examples aim at various use cases you might encounter.</p>
-<div class="toctree-wrapper compound">
-</div>
-<p>We haven&#8217;t made any examples yet. If you would like to contribute one, please <a class="reference internal" href="../contact.html#contact"><span class="std std-ref">contact us</span></a>.</p>
+  <div class="section" id="module-flika.window">
+<span id="module-window"></span><span id="window"></span><h1>Module: window<a class="headerlink" href="#module-flika.window" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="flika.window.Window">
+<em class="property">class </em><code class="descclassname">flika.window.</code><code class="descname">Window</code><span class="sig-paren">(</span><em>tif</em>, <em>name='Flika'</em>, <em>filename=''</em>, <em>commands=[]</em>, <em>metadata={}</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window" title="Permalink to this definition">¶</a></dt>
+<dd><p>Window objects are the central objects in flika. Almost all functions in the
+<a class="reference internal" href="process.html#module-flika.process" title="flika.process"><code class="xref py py-mod docutils literal"><span class="pre">process</span></code></a> module are performed on Window objects and
+output Window objects.</p>
+<dl class="method">
+<dt id="flika.window.Window.imageArray">
+<code class="descname">imageArray</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.imageArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns image as a 3d array, correcting for color or 2d image</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="flika.window.Window.paste">
+<code class="descname">paste</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.paste" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function pastes an ROI from one window into another.
+The ROIs will be linked so that when you translate one of them, the other one also moves</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
@@ -91,7 +99,7 @@ answers.</p>
   <li><a href="../index.html">Home</a></li>
   <li><a href="../contents.html">Contents</a></li>
   <li><a href="../getting-started.html">Install</a></li>
-  <li><a href="#">Examples</a></li>
+  <li><a href="../example/index.html">Examples</a></li>
   <li><a href="../plugins.html">Plugins</a></li>
   <li><a href="../contributing.html">Contributing</a></li>
   <li><a href="../contact.html">Contact</a></li>
