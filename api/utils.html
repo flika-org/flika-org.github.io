@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Module: utils &#8212; flika 0.2.0 documentation</title>
+    <title>Module: utils &#8212; flika 0.2.17 documentation</title>
     
     <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.2.0',
+        VERSION:     '0.2.17',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -48,7 +48,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">flika 0.2.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">flika 0.2.17 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -59,7 +59,131 @@
             
   <div class="section" id="module-flika.utils">
 <span id="module-utils"></span><span id="utils"></span><h1>Module: utils<a class="headerlink" href="#module-flika.utils" title="Permalink to this headline">¶</a></h1>
-<p>General utilities, cannot import from anywhere else in flika, and can only import standard library or external dependencies.</p>
+<p>Module for general utilities and standalone methods that don&#8217;t globally import from anywhere in flika</p>
+</div>
+<div class="section" id="submodule-utils-misc">
+<h1>Submodule: utils.misc<a class="headerlink" href="#submodule-utils-misc" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="flika.utils.misc.nonpartial">
+<code class="descclassname">flika.utils.misc.</code><code class="descname">nonpartial</code><span class="sig-paren">(</span><em>func</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.utils.misc.nonpartial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like functools.partial, this returns a function which, when called, calls
+<code class="docutils literal"><span class="pre">func(*args,</span> <span class="pre">**kwargs)</span></code>.</p>
+<p>Unlike functools.partial, extra arguments passed to the returned function
+are <em>not</em> passed to the input function.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="flika.utils.misc.random_color">
+<code class="descclassname">flika.utils.misc.</code><code class="descname">random_color</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#flika.utils.misc.random_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate an QColor that is bright enough to see on a black and white background</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">randomly generated color object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">QtGui.QColor</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="flika.utils.misc.load_ui">
+<code class="descclassname">flika.utils.misc.</code><code class="descname">load_ui</code><span class="sig-paren">(</span><em>path</em>, <em>parent=None</em>, <em>directory=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.utils.misc.load_ui" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a .ui file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Name of ui file to load</li>
+<li><strong>parent</strong> (<em>QtCore.QObject</em>) &#8211; Object to use as the parent of this widget</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The widget created from the specified ui file</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">QtWidgets.QWidget</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="flika.utils.misc.save_file_gui">
+<code class="descclassname">flika.utils.misc.</code><code class="descname">save_file_gui</code><span class="sig-paren">(</span><em>prompt='Save file'</em>, <em>directory=None</em>, <em>filetypes=''</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.utils.misc.save_file_gui" title="Permalink to this definition">¶</a></dt>
+<dd><p>File dialog for saving a new file, isolated to handle tuple/string return value</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>prompt</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; string to display at the top of the window</li>
+<li><strong>directory</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; initial directory to save the file to</li>
+<li><strong>filetypes</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; argument for filtering file types separated by ;; (<em>.png) or (Images *.png);;(Other *.</em>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the file path selected, or empty string if canceled</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)">str</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="flika.utils.misc.open_file_gui">
+<code class="descclassname">flika.utils.misc.</code><code class="descname">open_file_gui</code><span class="sig-paren">(</span><em>prompt='Open File'</em>, <em>directory=None</em>, <em>filetypes=''</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.utils.misc.open_file_gui" title="Permalink to this definition">¶</a></dt>
+<dd><p>File dialog for opening an existing file, isolated to handle tuple/string return value</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>prompt</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; string to display at the top of the window</li>
+<li><strong>directory</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; initial directory to open</li>
+<li><strong>filetypes</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; argument for filtering file types separated by ;; (<em>.png) or (Images *.png);;(Other *.</em>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the file (path+file+extension) selected, or None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)">str</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="submodule-utils-app">
+<h1>Submodule: utils.app<a class="headerlink" href="#submodule-utils-app" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="flika.utils.app.get_qapp">
+<code class="descclassname">flika.utils.app.</code><code class="descname">get_qapp</code><span class="sig-paren">(</span><em>icon_path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.utils.app.get_qapp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the QApplication instance currently in use. If no QApplication exists,
+one is created and the standard windoe icon is set to icon_path</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>icon_path</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; location of icon to use as default window icon</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the current application process</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">QtGui.QApplication</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 
 
@@ -103,7 +227,7 @@
     
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Kyle Ellefsen.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.3.
     </div>
     
 

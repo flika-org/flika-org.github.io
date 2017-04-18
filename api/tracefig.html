@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Module: tracefig &#8212; flika 0.2.0 documentation</title>
+    <title>Module: tracefig &#8212; flika 0.2.17 documentation</title>
     
     <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.2.0',
+        VERSION:     '0.2.17',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -48,7 +48,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">flika 0.2.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">flika 0.2.17 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -59,6 +59,52 @@
             
   <div class="section" id="module-flika.tracefig">
 <span id="module-tracefig"></span><span id="tracefig"></span><h1>Module: tracefig<a class="headerlink" href="#module-flika.tracefig" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="flika.tracefig.TraceFig">
+<em class="property">class </em><code class="descclassname">flika.tracefig.</code><code class="descname">TraceFig</code><a class="headerlink" href="#flika.tracefig.TraceFig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pyqtgraph PlotWidget with frame range selector. Display average trace of ROIs and updates in realtime.</p>
+<dl class="attribute">
+<dt id="flika.tracefig.TraceFig.p1">
+<code class="descname">p1</code><a class="headerlink" href="#flika.tracefig.TraceFig.p1" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>pg.PlotWidget</em> &#8211; top plot widget displaying selected region of traces</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="flika.tracefig.TraceFig.p2">
+<code class="descname">p2</code><a class="headerlink" href="#flika.tracefig.TraceFig.p2" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>pg.PlotWidget</em> &#8211; bottom plot widget displaying entire traces with region selection</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="flika.tracefig.TraceFig.rois">
+<code class="descname">rois</code><a class="headerlink" href="#flika.tracefig.TraceFig.rois" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>[dict]</em> &#8211; list of roi information dicts for reference</p>
+</dd></dl>
+
+<dl class="docutils">
+<dt>Signals:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">indexChanged(int):</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">emits the index of the mouse when the user hovers over the top plotWidget</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">finishedDrawingSignal():</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">emits when the bottom ROI is finished updating</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">keyPressSignal(QtCore.QEvent):</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">emits when the traceWindow is selected and a key is pressed</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">partialThreadUpdatedSignal():</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">emits when the top plot widget is updated</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 
 
@@ -102,7 +148,7 @@
     
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Kyle Ellefsen.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.3.
     </div>
     
 

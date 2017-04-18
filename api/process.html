@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Module: process &#8212; flika 0.2.0 documentation</title>
+    <title>Module: process &#8212; flika 0.2.17 documentation</title>
     
     <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.2.0',
+        VERSION:     '0.2.17',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -48,7 +48,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">flika 0.2.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">flika 0.2.17 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -59,6 +59,87 @@
             
   <div class="section" id="module-flika.process">
 <span id="module-process"></span><span id="process"></span><h1>Module: process<a class="headerlink" href="#module-flika.process" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-flika.process.BaseProcess">
+<span id="module-process-baseprocess"></span><h2>Module: process.BaseProcess<a class="headerlink" href="#module-flika.process.BaseProcess" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="flika.process.BaseProcess.BaseProcess">
+<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">BaseProcess</code><a class="headerlink" href="#flika.process.BaseProcess.BaseProcess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subclass BaseProcess when writing your own process. Why would you want to use BaseProcess?</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="flika.process.BaseProcess.CheckBox">
+<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">CheckBox</code><span class="sig-paren">(</span><em>parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.BaseProcess.CheckBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>I overwrote the QCheckBox class so that every graphical element has the method &#8216;setValue&#8217;</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="flika.process.BaseProcess.ColorSelector">
+<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">ColorSelector</code><a class="headerlink" href="#flika.process.BaseProcess.ColorSelector" title="Permalink to this definition">¶</a></dt>
+<dd><p>This widget is a button with a label.  Once you click the button, the widget waits for you to select a color.  Once you do, it sets self.color and it sets the label.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="flika.process.BaseProcess.ComboBox">
+<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">ComboBox</code><span class="sig-paren">(</span><em>parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.BaseProcess.ComboBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>I overwrote the QComboBox class so that every graphical element has the method &#8216;setValue&#8217;</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="flika.process.BaseProcess.FileSelector">
+<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">FileSelector</code><span class="sig-paren">(</span><em>filetypes='*.*'</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.BaseProcess.FileSelector" title="Permalink to this definition">¶</a></dt>
+<dd><p>This widget is a button with a label.  Once you click the button, the widget waits for you to select a file to save.  Once you do, it sets self.filename and it sets the label.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="flika.process.BaseProcess.SliderLabelOdd">
+<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">SliderLabelOdd</code><a class="headerlink" href="#flika.process.BaseProcess.SliderLabelOdd" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a modified SliderLabel class that forces the user to only choose odd numbers.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="flika.process.BaseProcess.WindowSelector">
+<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">WindowSelector</code><a class="headerlink" href="#flika.process.BaseProcess.WindowSelector" title="Permalink to this definition">¶</a></dt>
+<dd><p>This widget is a button with a label.  Once you click the button, the widget waits for you to click a Window object.  Once you do, it sets self.window to be the window, and it sets the label to be the widget name.</p>
+<dl class="method">
+<dt id="flika.process.BaseProcess.WindowSelector.setValue">
+<code class="descname">setValue</code><span class="sig-paren">(</span><em>window</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.BaseProcess.WindowSelector.setValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is written to satify the requirement that all items have a setValue function to recall from settings the last set value.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-flika.process.binary">
+<span id="module-process-binary"></span><h2>Module: process.binary<a class="headerlink" href="#module-flika.process.binary" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="flika.process.binary.Threshold">
+<em class="property">class </em><code class="descclassname">flika.process.binary.</code><code class="descname">Threshold</code><a class="headerlink" href="#flika.process.binary.Threshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>threshold(value, darkBackground=False, keepSourceWindow=False)
+Creates a boolean matrix by applying a threshold</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>value</strong> (<em>|</em>) &#8211; </li>
+<li><strong>darkBackground</strong> (<em>|</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">newWindow</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-flika.process.color">
+<span id="module-process-color"></span><h2>Module: process.color<a class="headerlink" href="#module-flika.process.color" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-flika.process.file_">
+<span id="module-process-file"></span><h2>Module: process.file_<a class="headerlink" href="#module-flika.process.file_" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="flika.process.file_.save_file">
 <code class="descclassname">flika.process.file_.</code><code class="descname">save_file</code><span class="sig-paren">(</span><em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.file_.save_file" title="Permalink to this definition">¶</a></dt>
@@ -73,27 +154,60 @@
 </table>
 </dd></dl>
 
-<dl class="class">
-<dt id="flika.process.filters.Gaussian_blur">
-<em class="property">class </em><code class="descclassname">flika.process.filters.</code><code class="descname">Gaussian_blur</code><span class="sig-paren">(</span><em>sigma</em>, <em>norm_edges=False</em>, <em>keepSourceWindow=False</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.filters.Gaussian_blur" title="Permalink to this definition">¶</a></dt>
-<dd><p>This applies a spatial gaussian_blur to every frame of your stack.</p>
+<dl class="function">
+<dt id="flika.process.file_.open_file">
+<code class="descclassname">flika.process.file_.</code><code class="descname">open_file</code><span class="sig-paren">(</span><em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.file_.open_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens an image or movie file (.tif, .stk, .nd2) into a newWindow.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>sigma</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; The width of the gaussian</li>
-<li><strong>norm_edges</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; If true, this reduces the values of the pixels near the edges so they have the same standard deviation as the rest of the image</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<em>|</em>) &#8211; </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">flika.window.Window</p>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">newWindow</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
+<dl class="function">
+<dt id="flika.process.file_.close">
+<code class="descclassname">flika.process.file_.</code><code class="descname">close</code><span class="sig-paren">(</span><em>windows=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.file_.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will close a window or a set of windows.</p>
+<dl class="docutils">
+<dt>Values for windows:</dt>
+<dd><div class="first last line-block">
+<div class="line">&#8216;all&#8217; (str) &#8211; closes all windows</div>
+<div class="line">windows (list) - closes each window in the list</div>
+<div class="line">(Window) - closes individual window</div>
+<div class="line">(None) - closes current window</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-flika.process.filters">
+<span id="module-process-filters"></span><h2>Module: process.filters<a class="headerlink" href="#module-flika.process.filters" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-flika.process.math_">
+<span id="module-process-math"></span><h2>Module: process.math_<a class="headerlink" href="#module-flika.process.math_" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-flika.process.measure">
+<span id="module-process-measure"></span><h2>Module: process.measure<a class="headerlink" href="#module-flika.process.measure" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-flika.process.overlay">
+<span id="module-process-overlay"></span><h2>Module: process.overlay<a class="headerlink" href="#module-flika.process.overlay" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-flika.process.progress_bar">
+<span id="module-process-progress-bar"></span><h2>Module: process.progress_bar<a class="headerlink" href="#module-flika.process.progress_bar" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-flika.process.roi">
+<span id="module-process-roi"></span><h2>Module: process.roi<a class="headerlink" href="#module-flika.process.roi" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-flika.process.stacks">
+<span id="module-process-stacks"></span><h2>Module: process.stacks<a class="headerlink" href="#module-flika.process.stacks" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
@@ -137,7 +251,7 @@
     
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Kyle Ellefsen.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.3.
     </div>
     
 

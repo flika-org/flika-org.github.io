@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Module: roi &#8212; flika 0.2.0 documentation</title>
+    <title>Module: roi &#8212; flika 0.2.17 documentation</title>
     
     <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.2.0',
+        VERSION:     '0.2.17',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -48,7 +48,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">flika 0.2.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">flika 0.2.17 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -59,329 +59,255 @@
             
   <div class="section" id="module-flika.roi">
 <span id="module-roi"></span><span id="roi"></span><h1>Module: roi<a class="headerlink" href="#module-flika.roi" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="flika.roi.ROI_Wrapper">
-<em class="property">class </em><code class="descclassname">flika.roi.</code><code class="descname">ROI_Wrapper</code><span class="sig-paren">(</span><em>window</em>, <em>pts</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.roi.ROI_Wrapper" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>ROI wrapper interface for all ROI types, template class for duplicate functions and functions to override</dt>
-<dd>connect window closeEvent to ROI delete
-set the window currentROI to self</dd>
+<p>This module declares Region Of Interest (ROI) types as extensions of pyqtgraph.ROI objects.</p>
+<dl class="docutils">
+<dt>Current ROI types are:</dt>
+<dd><ul class="first last simple">
+<li>line</li>
+<li>rectangle</li>
+<li>freehand</li>
+<li>rect_line</li>
+</ul>
+</dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">roi</span> <span class="o">=</span> <span class="n">makeROI</span><span class="p">(</span><span class="s1">&#39;line&#39;</span><span class="p">,</span> <span class="p">[[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">roi</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">roi</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">win2</span> <span class="o">=</span> <span class="n">open_file</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">roi2</span> <span class="o">=</span> <span class="n">win2</span><span class="o">.</span><span class="n">paste</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>Correct ROI line handles to be at center of pixel</li>
+<li>Optimize ROI freehand to not extend PolylineROI</li>
+</ul>
+</div>
+</div>
+<div class="section" id="class-roi-base">
+<h1>Class: ROI_Base<a class="headerlink" href="#class-roi-base" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="flika.roi.ROI_Base">
+<em class="property">class </em><code class="descclassname">flika.roi.</code><code class="descname">ROI_Base</code><span class="sig-paren">(</span><em>window</em>, <em>pts</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.roi.ROI_Base" title="Permalink to this definition">¶</a></dt>
+<dd><p>ROI_Base interface for all ROI types</p>
+<p>Template class for common and abstract functions, connects window.closeEvent to pyqtgraph.ROI.delete, set the window.currentROI to self</p>
 <dl class="attribute">
-<dt id="flika.roi.ROI_Wrapper.colorDialog">
-<code class="descname">colorDialog</code><a class="headerlink" href="#flika.roi.ROI_Wrapper.colorDialog" title="Permalink to this definition">¶</a></dt>
+<dt id="flika.roi.ROI_Base.colorDialog">
+<code class="descname">colorDialog</code><a class="headerlink" href="#flika.roi.ROI_Base.colorDialog" title="Permalink to this definition">¶</a></dt>
 <dd><p>dialog for selecting the color of the ROI and its trace</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="flika.roi.ROI_Wrapper.traceWindow">
-<code class="descname">traceWindow</code><a class="headerlink" href="#flika.roi.ROI_Wrapper.traceWindow" title="Permalink to this definition">¶</a></dt>
-<dd><p>the tracewindow that this ROI is plotted to, or None</p>
+<dt id="flika.roi.ROI_Base.traceWindow">
+<code class="descname">traceWindow</code><a class="headerlink" href="#flika.roi.ROI_Base.traceWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>the <a class="reference internal" href="tracefig.html#flika.tracefig.TraceFig" title="flika.tracefig.TraceFig"><code class="xref py py-class docutils literal"><span class="pre">TraceFig</span></code></a> that this ROI is plotted to, or None</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="flika.roi.ROI_Wrapper.mask">
-<code class="descname">mask</code><a class="headerlink" href="#flika.roi.ROI_Wrapper.mask" title="Permalink to this definition">¶</a></dt>
-<dd><p>array of XY values that are contained within the ROI</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="flika.roi.ROI_Wrapper.pts">
-<code class="descname">pts</code><a class="headerlink" href="#flika.roi.ROI_Wrapper.pts" title="Permalink to this definition">¶</a></dt>
+<dt id="flika.roi.ROI_Base.pts">
+<code class="descname">pts</code><a class="headerlink" href="#flika.roi.ROI_Base.pts" title="Permalink to this definition">¶</a></dt>
 <dd><p>array of XY values used to copy the ROI</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="flika.roi.ROI_Wrapper.linkedROIs">
-<code class="descname">linkedROIs</code><a class="headerlink" href="#flika.roi.ROI_Wrapper.linkedROIs" title="Permalink to this definition">¶</a></dt>
+<dt id="flika.roi.ROI_Base.linkedROIs">
+<code class="descname">linkedROIs</code><a class="headerlink" href="#flika.roi.ROI_Base.linkedROIs" title="Permalink to this definition">¶</a></dt>
 <dd><p>set of rois that act as one ROI</p>
 </dd></dl>
 
-<dl class="docutils">
-<dt>Not Implemented Functions:</dt>
-<dd>getMask()
-getPoints()</dd>
-<dt>Functions:</dt>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<dl class="last docutils">
+<dt>All ROI objects implement the following methods:</dt>
 <dd><dl class="first last docutils">
-<dt>plot():</dt>
-<dd>run the roiPlot function and link this window to the traceWindow
-Returns the traceWindow</dd>
-<dt>unplot():</dt>
-<dd>Remove the roi from its traceWindow</dd>
-<dt>link(roi):</dt>
-<dd>add an roi to the linkedROIs set, so they translate together</dd>
-<dt>colorSelected(QColor):</dt>
-<dd>set the color of the roi</dd>
-<dt>copy():</dt>
-<dd>store the roi in the clipboard</dd>
-<dt>paste():</dt>
-<dd>Create an roi from the clipboard ROI using roi.getPoints()</dd>
-<dt>delete():</dt>
-<dd>unplot the ROI, remove the ROI from the window, clear it from the clipboard if it was copied, disconnect all signals</dd>
-<dt>drawFinished():</dt>
-<dd>add the ROI to the window, called by ROI_Drawing</dd>
-<dt>str():</dt>
-<dd>return type and self.pts for recreating the ROI</dd>
+<dt>getMask():</dt>
+<dd>returns the [2, N] array of mask coordinates</dd>
+<dt>getPoints():</dt>
+<dd>returns the [N, 2] points that make up the ROI</dd>
+<dt>draw_from_points(pts, finish=True):</dt>
+<dd>updates the point locations that make the ROI, used in linked ROIs</dd>
 </dl>
 </dd>
 </dl>
+</div>
 </dd></dl>
 
-<dl class="class">
-<dt>
-<em class="property">class </em><code class="descclassname">flika.roi.</code><code class="descname">ROI_Wrapper</code><span class="sig-paren">(</span><em>window</em>, <em>pts</em><span class="sig-paren">)</span></dt>
-<dd><dl class="docutils">
-<dt>ROI wrapper interface for all ROI types, template class for duplicate functions and functions to override</dt>
-<dd>connect window closeEvent to ROI delete
-set the window currentROI to self</dd>
-</dl>
-<dl class="attribute">
-<dt>
-<code class="descname">colorDialog</code></dt>
-<dd><p>dialog for selecting the color of the ROI and its trace</p>
+<dl class="method">
+<dt id="flika.roi.ROI_Base.getTrace">
+<code class="descclassname">ROI_Base.</code><code class="descname">getTrace</code><span class="sig-paren">(</span><em>bounds=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.roi.ROI_Base.getTrace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the average of the pixels within this ROI in its window</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Average value within ROI mask, as an array. Cropped to bounds if specified</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
-<dl class="attribute">
-<dt>
-<code class="descname">traceWindow</code></dt>
-<dd><p>the tracewindow that this ROI is plotted to, or None</p>
+<dl class="method">
+<dt id="flika.roi.ROI_Base.plot">
+<code class="descclassname">ROI_Base.</code><code class="descname">plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#flika.roi.ROI_Base.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the ROI trace in a <a class="reference internal" href="tracefig.html#flika.tracefig.TraceFig" title="flika.tracefig.TraceFig"><code class="xref py py-class docutils literal"><span class="pre">TraceFig</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the trace window that the ROI was plotted to</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="tracefig.html#flika.tracefig.TraceFig" title="flika.tracefig.TraceFig">tracefig.TraceFig</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
-<dl class="attribute">
-<dt>
-<code class="descname">mask</code></dt>
-<dd><p>array of XY values that are contained within the ROI</p>
+<dl class="method">
+<dt id="flika.roi.ROI_Base.unplot">
+<code class="descclassname">ROI_Base.</code><code class="descname">unplot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#flika.roi.ROI_Base.unplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the ROI from its <a class="reference internal" href="tracefig.html#flika.tracefig.TraceFig" title="flika.tracefig.TraceFig"><code class="xref py py-class docutils literal"><span class="pre">TraceFig</span></code></a></p>
 </dd></dl>
 
-<dl class="attribute">
-<dt>
-<code class="descname">pts</code></dt>
-<dd><p>array of XY values used to copy the ROI</p>
+<dl class="method">
+<dt id="flika.roi.ROI_Base.colorSelected">
+<code class="descclassname">ROI_Base.</code><code class="descname">colorSelected</code><span class="sig-paren">(</span><em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.roi.ROI_Base.colorSelected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the pen color of the ROI</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>color</strong> (<em>QtGui.QColor</em>) &#8211; new color for the ROI</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
-<dl class="attribute">
-<dt>
-<code class="descname">linkedROIs</code></dt>
-<dd><p>set of rois that act as one ROI</p>
+<dl class="method">
+<dt id="flika.roi.ROI_Base.delete">
+<code class="descclassname">ROI_Base.</code><code class="descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#flika.roi.ROI_Base.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the ROI from its window, unlink all ROIs and delete the object</p>
 </dd></dl>
 
-<dl class="docutils">
-<dt>Not Implemented Functions:</dt>
-<dd>getMask()
-getPoints()</dd>
-<dt>Functions:</dt>
-<dd><dl class="first last docutils">
-<dt>plot():</dt>
-<dd>run the roiPlot function and link this window to the traceWindow
-Returns the traceWindow</dd>
-<dt>unplot():</dt>
-<dd>Remove the roi from its traceWindow</dd>
-<dt>link(roi):</dt>
-<dd>add an roi to the linkedROIs set, so they translate together</dd>
-<dt>colorSelected(QColor):</dt>
-<dd>set the color of the roi</dd>
-<dt>copy():</dt>
-<dd>store the roi in the clipboard</dd>
-<dt>paste():</dt>
-<dd>Create an roi from the clipboard ROI using roi.getPoints()</dd>
-<dt>delete():</dt>
-<dd>unplot the ROI, remove the ROI from the window, clear it from the clipboard if it was copied, disconnect all signals</dd>
-<dt>drawFinished():</dt>
-<dd>add the ROI to the window, called by ROI_Drawing</dd>
-<dt>str():</dt>
-<dd>return type and self.pts for recreating the ROI</dd>
-</dl>
-</dd>
-</dl>
+<dl class="method">
+<dt id="flika.roi.ROI_Base._str">
+<code class="descclassname">ROI_Base.</code><code class="descname">_str</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#flika.roi.ROI_Base._str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return ROI kind and points for easy export and import</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">ROI string representation</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)">str</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
+</div>
+<div class="section" id="class-roi-line">
+<h1>Class: ROI_line<a class="headerlink" href="#class-roi-line" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="flika.roi.ROI_line">
 <em class="property">class </em><code class="descclassname">flika.roi.</code><code class="descname">ROI_line</code><span class="sig-paren">(</span><em>window</em>, <em>positions</em>, <em>**kargs</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.roi.ROI_line" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>ROI Line class for selecting a straight line of pixels between two points</dt>
-<dd>Extends from the ROI_Wrapper class and pyqtgraph ROI.LineSegmentROI</dd>
-</dl>
+<dd><p>ROI Line class for selecting a straight line of pixels between two points.</p>
+<p>Extends from <a class="reference internal" href="#flika.roi.ROI_Base" title="flika.roi.ROI_Base"><code class="xref py py-class docutils literal"><span class="pre">ROI_Base</span></code></a> and pyqtgraph pyqtgraph.LineSegmentROI</p>
+<dl class="attribute">
+<dt id="flika.roi.ROI_line.kymograph">
+<code class="descname">kymograph</code><a class="headerlink" href="#flika.roi.ROI_line.kymograph" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Window</em> &#8211; <a class="reference internal" href="window.html#flika.window.Window" title="flika.window.Window"><code class="xref py py-class docutils literal"><span class="pre">Window</span></code></a> showing 2d kymograph.</p>
 </dd></dl>
 
+</dd></dl>
+
+</div>
+<div class="section" id="class-roi-rectangle">
+<h1>Class: ROI_rectangle<a class="headerlink" href="#class-roi-rectangle" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="flika.roi.ROI_rectangle">
 <em class="property">class </em><code class="descclassname">flika.roi.</code><code class="descname">ROI_rectangle</code><span class="sig-paren">(</span><em>window</em>, <em>pos</em>, <em>size</em>, <em>resizable=True</em>, <em>**kargs</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.roi.ROI_rectangle" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>ROI rectangle class for selecting a set width and height group of pixels on an image</dt>
-<dd>Extends from pyqtgraph ROI and ROI_Wrapper</dd>
-</dl>
+<dd><p>ROI rectangle class for selecting a set width and height group of pixels on an image.</p>
+<p>Extends from <a class="reference internal" href="#flika.roi.ROI_Base" title="flika.roi.ROI_Base"><code class="xref py py-class docutils literal"><span class="pre">ROI_Base</span></code></a> and pyqtgraph.ROI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="flika.roi.ROI_rectangle.crop">
+<code class="descclassname">ROI_rectangle.</code><code class="descname">crop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#flika.roi.ROI_rectangle.crop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new window of the image cropped to this ROI</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>window</strong> &#8211; parent window to draw the ROI in</li>
-<li><strong>pos</strong> &#8211; XY coordinate of the upper left corner of the rectangle</li>
-<li><strong>size</strong> &#8211; (width, height) tuple of the ROI</li>
-<li><strong>resizable</strong> &#8211; scale handles will be drawn on each corner if this is True</li>
-<li><strong>pg.ROI for other parameters</strong> (<em>See</em>) &#8211; </li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">cropped image Window</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="window.html#flika.window.Window" title="flika.window.Window">window.Window</a></td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Functions:</dt>
-<dd><dl class="first last docutils">
-<dt>crop():</dt>
-<dd>create a new window with the original image cropped within this ROI</dd>
-</dl>
-</dd>
-</dl>
 </dd></dl>
 
-<dl class="class">
-<dt>
-<em class="property">class </em><code class="descclassname">flika.roi.</code><code class="descname">ROI_rectangle</code><span class="sig-paren">(</span><em>window</em>, <em>pos</em>, <em>size</em>, <em>resizable=True</em>, <em>**kargs</em><span class="sig-paren">)</span></dt>
-<dd><dl class="docutils">
-<dt>ROI rectangle class for selecting a set width and height group of pixels on an image</dt>
-<dd>Extends from pyqtgraph ROI and ROI_Wrapper</dd>
-</dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>window</strong> &#8211; parent window to draw the ROI in</li>
-<li><strong>pos</strong> &#8211; XY coordinate of the upper left corner of the rectangle</li>
-<li><strong>size</strong> &#8211; (width, height) tuple of the ROI</li>
-<li><strong>resizable</strong> &#8211; scale handles will be drawn on each corner if this is True</li>
-<li><strong>pg.ROI for other parameters</strong> (<em>See</em>) &#8211; </li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>Functions:</dt>
-<dd><dl class="first last docutils">
-<dt>crop():</dt>
-<dd>create a new window with the original image cropped within this ROI</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="class">
-<dt>
-<em class="property">class </em><code class="descclassname">flika.roi.</code><code class="descname">ROI_rectangle</code><span class="sig-paren">(</span><em>window</em>, <em>pos</em>, <em>size</em>, <em>resizable=True</em>, <em>**kargs</em><span class="sig-paren">)</span></dt>
-<dd><dl class="docutils">
-<dt>ROI rectangle class for selecting a set width and height group of pixels on an image</dt>
-<dd>Extends from pyqtgraph ROI and ROI_Wrapper</dd>
-</dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>window</strong> &#8211; parent window to draw the ROI in</li>
-<li><strong>pos</strong> &#8211; XY coordinate of the upper left corner of the rectangle</li>
-<li><strong>size</strong> &#8211; (width, height) tuple of the ROI</li>
-<li><strong>resizable</strong> &#8211; scale handles will be drawn on each corner if this is True</li>
-<li><strong>pg.ROI for other parameters</strong> (<em>See</em>) &#8211; </li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>Functions:</dt>
-<dd><dl class="first last docutils">
-<dt>crop():</dt>
-<dd>create a new window with the original image cropped within this ROI</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="class">
-<dt>
-<em class="property">class </em><code class="descclassname">flika.roi.</code><code class="descname">ROI_rectangle</code><span class="sig-paren">(</span><em>window</em>, <em>pos</em>, <em>size</em>, <em>resizable=True</em>, <em>**kargs</em><span class="sig-paren">)</span></dt>
-<dd><dl class="docutils">
-<dt>ROI rectangle class for selecting a set width and height group of pixels on an image</dt>
-<dd>Extends from pyqtgraph ROI and ROI_Wrapper</dd>
-</dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>window</strong> &#8211; parent window to draw the ROI in</li>
-<li><strong>pos</strong> &#8211; XY coordinate of the upper left corner of the rectangle</li>
-<li><strong>size</strong> &#8211; (width, height) tuple of the ROI</li>
-<li><strong>resizable</strong> &#8211; scale handles will be drawn on each corner if this is True</li>
-<li><strong>pg.ROI for other parameters</strong> (<em>See</em>) &#8211; </li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>Functions:</dt>
-<dd><dl class="first last docutils">
-<dt>crop():</dt>
-<dd>create a new window with the original image cropped within this ROI</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="class">
-<dt>
-<em class="property">class </em><code class="descclassname">flika.roi.</code><code class="descname">ROI_rectangle</code><span class="sig-paren">(</span><em>window</em>, <em>pos</em>, <em>size</em>, <em>resizable=True</em>, <em>**kargs</em><span class="sig-paren">)</span></dt>
-<dd><dl class="docutils">
-<dt>ROI rectangle class for selecting a set width and height group of pixels on an image</dt>
-<dd>Extends from pyqtgraph ROI and ROI_Wrapper</dd>
-</dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>window</strong> &#8211; parent window to draw the ROI in</li>
-<li><strong>pos</strong> &#8211; XY coordinate of the upper left corner of the rectangle</li>
-<li><strong>size</strong> &#8211; (width, height) tuple of the ROI</li>
-<li><strong>resizable</strong> &#8211; scale handles will be drawn on each corner if this is True</li>
-<li><strong>pg.ROI for other parameters</strong> (<em>See</em>) &#8211; </li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>Functions:</dt>
-<dd><dl class="first last docutils">
-<dt>crop():</dt>
-<dd>create a new window with the original image cropped within this ROI</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="class">
-<dt id="flika.roi.ROI">
-<em class="property">class </em><code class="descclassname">flika.roi.</code><code class="descname">ROI</code><span class="sig-paren">(</span><em>window</em>, <em>pts</em>, <em>**kargs</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.roi.ROI" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+</div>
+<div class="section" id="class-roi-rect-line">
+<h1>Class: ROI_rect_line<a class="headerlink" href="#class-roi-rect-line" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="flika.roi.ROI_rect_line">
 <em class="property">class </em><code class="descclassname">flika.roi.</code><code class="descname">ROI_rect_line</code><span class="sig-paren">(</span><em>window</em>, <em>pts</em>, <em>width=1</em>, <em>**kargs</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.roi.ROI_rect_line" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Collection of linked line segments with adjustable width.</p>
+<p>Extends from <a class="reference internal" href="#flika.roi.ROI_Base" title="flika.roi.ROI_Base"><code class="xref py py-class docutils literal"><span class="pre">ROI_Base</span></code></a> and QtWidgets.QGraphicsObject</p>
+<dl class="attribute">
+<dt id="flika.roi.ROI_rect_line.kymograph">
+<code class="descname">kymograph</code><a class="headerlink" href="#flika.roi.ROI_rect_line.kymograph" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Window</em> &#8211; <a class="reference internal" href="window.html#flika.window.Window" title="flika.window.Window"><code class="xref py py-class docutils literal"><span class="pre">Window</span></code></a> showing 2d kymograph.</p>
+</dd></dl>
 
+</dd></dl>
+
+<dl class="method">
+<dt id="flika.roi.ROI_rect_line.setWidth">
+<code class="descclassname">ROI_rect_line.</code><code class="descname">setWidth</code><span class="sig-paren">(</span><em>newWidth=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.roi.ROI_rect_line.setWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the width of each segment in the ROI</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>newWidth</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; new width of all segments</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="flika.roi.makeROI">
-<code class="descclassname">flika.roi.</code><code class="descname">makeROI</code><span class="sig-paren">(</span><em>kind</em>, <em>pts</em>, <em>window=None</em>, <em>**kargs</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.roi.makeROI" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">flika.roi.</code><code class="descname">makeROI</code><span class="sig-paren">(</span><em>kind</em>, <em>pts</em>, <em>window=None</em>, <em>color=None</em>, <em>**kargs</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.roi.makeROI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an ROI object in window with the given points</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>kind</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; one of [&#8216;line&#8217;, &#8216;rectangle&#8217;, &#8216;freehand&#8217;, &#8216;rect_line&#8217;]</li>
+<li><strong>pts</strong> (<em></em><em>[</em><em>N</em><em>, </em><em>2</em><em>] </em><em>list of coords</em>) &#8211; points used to draw the ROI, differs by kind</li>
+<li><strong>window</strong> (<a class="reference internal" href="window.html#flika.window.Window" title="flika.window.Window"><em>window.Window</em></a>) &#8211; window to draw the ROI in, or currentWindow if not specified</li>
+<li><strong>color</strong> (<em>QtGui.QColor</em>) &#8211; pen color of the new ROI</li>
+<li><strong>**kargs</strong> &#8211; additional arguments to pass to the ROI __init__ function</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">ROI Object extending ROI_Base</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
-<dt id="flika.roi.import_rois">
-<code class="descclassname">flika.roi.</code><code class="descname">import_rois</code><span class="sig-paren">(</span><em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.roi.import_rois" title="Permalink to this definition">¶</a></dt>
+<dt id="flika.roi.open_rois">
+<code class="descclassname">flika.roi.</code><code class="descname">open_rois</code><span class="sig-paren">(</span><em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.roi.open_rois" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open an roi.txt file, creates ROI objects and places them in the current Window.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -438,7 +364,7 @@ Returns the traceWindow</dd>
     
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Kyle Ellefsen.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.3.
     </div>
     
 
