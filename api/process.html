@@ -62,42 +62,6 @@
 <div class="section" id="module-flika.process.BaseProcess">
 <span id="module-process-baseprocess"></span><h2>Module: process.BaseProcess<a class="headerlink" href="#module-flika.process.BaseProcess" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="flika.process.BaseProcess.BaseProcess">
-<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">BaseProcess</code><a class="headerlink" href="#flika.process.BaseProcess.BaseProcess" title="Permalink to this definition">¶</a></dt>
-<dd><p>Subclass BaseProcess when writing your own process. Why would you want to use BaseProcess?</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="flika.process.BaseProcess.CheckBox">
-<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">CheckBox</code><span class="sig-paren">(</span><em>parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.BaseProcess.CheckBox" title="Permalink to this definition">¶</a></dt>
-<dd><p>I overwrote the QCheckBox class so that every graphical element has the method &#8216;setValue&#8217;</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="flika.process.BaseProcess.ColorSelector">
-<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">ColorSelector</code><a class="headerlink" href="#flika.process.BaseProcess.ColorSelector" title="Permalink to this definition">¶</a></dt>
-<dd><p>This widget is a button with a label.  Once you click the button, the widget waits for you to select a color.  Once you do, it sets self.color and it sets the label.</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="flika.process.BaseProcess.ComboBox">
-<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">ComboBox</code><span class="sig-paren">(</span><em>parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.BaseProcess.ComboBox" title="Permalink to this definition">¶</a></dt>
-<dd><p>I overwrote the QComboBox class so that every graphical element has the method &#8216;setValue&#8217;</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="flika.process.BaseProcess.FileSelector">
-<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">FileSelector</code><span class="sig-paren">(</span><em>filetypes='*.*'</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.BaseProcess.FileSelector" title="Permalink to this definition">¶</a></dt>
-<dd><p>This widget is a button with a label.  Once you click the button, the widget waits for you to select a file to save.  Once you do, it sets self.filename and it sets the label.</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="flika.process.BaseProcess.SliderLabelOdd">
-<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">SliderLabelOdd</code><a class="headerlink" href="#flika.process.BaseProcess.SliderLabelOdd" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is a modified SliderLabel class that forces the user to only choose odd numbers.</p>
-</dd></dl>
-
-<dl class="class">
 <dt id="flika.process.BaseProcess.WindowSelector">
 <em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">WindowSelector</code><a class="headerlink" href="#flika.process.BaseProcess.WindowSelector" title="Permalink to this definition">¶</a></dt>
 <dd><p>This widget is a button with a label.  Once you click the button, the widget waits for you to click a Window object.  Once you do, it sets self.window to be the window, and it sets the label to be the widget name.</p>
@@ -107,6 +71,42 @@
 <dd><p>This function is written to satify the requirement that all items have a setValue function to recall from settings the last set value.</p>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="class">
+<dt id="flika.process.BaseProcess.FileSelector">
+<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">FileSelector</code><span class="sig-paren">(</span><em>filetypes='*.*'</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.BaseProcess.FileSelector" title="Permalink to this definition">¶</a></dt>
+<dd><p>This widget is a button with a label.  Once you click the button, the widget waits for you to select a file to save.  Once you do, it sets self.filename and it sets the label.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="flika.process.BaseProcess.ColorSelector">
+<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">ColorSelector</code><a class="headerlink" href="#flika.process.BaseProcess.ColorSelector" title="Permalink to this definition">¶</a></dt>
+<dd><p>This widget is a button with a label.  Once you click the button, the widget waits for you to select a color.  Once you do, it sets self.color and it sets the label.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="flika.process.BaseProcess.SliderLabelOdd">
+<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">SliderLabelOdd</code><a class="headerlink" href="#flika.process.BaseProcess.SliderLabelOdd" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a modified SliderLabel class that forces the user to only choose odd numbers.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="flika.process.BaseProcess.CheckBox">
+<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">CheckBox</code><span class="sig-paren">(</span><em>parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.BaseProcess.CheckBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>I overwrote the QCheckBox class so that every graphical element has the method &#8216;setValue&#8217;</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="flika.process.BaseProcess.ComboBox">
+<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">ComboBox</code><span class="sig-paren">(</span><em>parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.BaseProcess.ComboBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>I overwrote the QComboBox class so that every graphical element has the method &#8216;setValue&#8217;</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="flika.process.BaseProcess.BaseProcess">
+<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">BaseProcess</code><a class="headerlink" href="#flika.process.BaseProcess.BaseProcess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subclass BaseProcess when writing your own process. Why would you want to use BaseProcess?</p>
 </dd></dl>
 
 </div>
