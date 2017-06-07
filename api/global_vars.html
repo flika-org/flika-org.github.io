@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Module: global_vars &#8212; flika 0.2.17 documentation</title>
+    <title>Module: global_vars &#8212; flika 0.2.21 documentation</title>
     
     <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.2.17',
+        VERSION:     '0.2.21',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -48,7 +48,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">flika 0.2.17 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">flika 0.2.21 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -65,7 +65,7 @@
 </div>
 <p>then all of the variables inside global_vars can be accessed as <code class="docutils literal"><span class="pre">g.*</span></code>. For instance, to access the
 image inside current window, simply run:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">currentWindow</span><span class="o">.</span><span class="n">image</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">win</span><span class="o">.</span><span class="n">image</span>
 </pre></div>
 </div>
 <dl class="data">
@@ -116,6 +116,12 @@ restarted, this settings object is populated with values from this file. Setting
 <dl class="data">
 <dt id="flika.global_vars.currentWindow">
 <code class="descclassname">flika.global_vars.</code><code class="descname">currentWindow</code><em class="property"> = None</em><a class="headerlink" href="#flika.global_vars.currentWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="window.html#flika.window.Window" title="flika.window.Window"><code class="xref py py-class docutils literal"><span class="pre">window</span></code></a> &#8211; The window that is currently selected</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="flika.global_vars.win">
+<code class="descclassname">flika.global_vars.</code><code class="descname">win</code><em class="property"> = None</em><a class="headerlink" href="#flika.global_vars.win" title="Permalink to this definition">¶</a></dt>
 <dd><p><a class="reference internal" href="window.html#flika.window.Window" title="flika.window.Window"><code class="xref py py-class docutils literal"><span class="pre">window</span></code></a> &#8211; The window that is currently selected</p>
 </dd></dl>
 
