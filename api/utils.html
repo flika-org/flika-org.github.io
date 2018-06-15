@@ -1,30 +1,19 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Module: utils &#8212; flika 0.2.21 documentation</title>
-    
+    <title>Module: utils &#8212; flika 0.2.25 documentation</title>
     <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.2.21',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -32,8 +21,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
 
-  </head>
-  <body role="document">
+  </head><body>
   
     
     
@@ -48,7 +36,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">flika 0.2.21 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">flika 0.2.25 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -59,15 +47,14 @@
             
   <div class="section" id="module-flika.utils">
 <span id="module-utils"></span><span id="utils"></span><h1>Module: utils<a class="headerlink" href="#module-flika.utils" title="Permalink to this headline">¶</a></h1>
-<p>Module for general utilities and standalone methods that don&#8217;t globally import from anywhere in flika</p>
-</div>
+<p>Module for general utilities and standalone methods that don’t globally import from anywhere in flika</p>
 <div class="section" id="submodule-utils-misc">
-<h1>Submodule: utils.misc<a class="headerlink" href="#submodule-utils-misc" title="Permalink to this headline">¶</a></h1>
+<h2>Submodule: utils.misc<a class="headerlink" href="#submodule-utils-misc" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="flika.utils.misc.nonpartial">
 <code class="descclassname">flika.utils.misc.</code><code class="descname">nonpartial</code><span class="sig-paren">(</span><em>func</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.utils.misc.nonpartial" title="Permalink to this definition">¶</a></dt>
 <dd><p>Like functools.partial, this returns a function which, when called, calls
-<code class="docutils literal"><span class="pre">func(*args,</span> <span class="pre">**kwargs)</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">func(*args,</span> <span class="pre">**kwargs)</span></code>.</p>
 <p>Unlike functools.partial, extra arguments passed to the returned function
 are <em>not</em> passed to the input function.</p>
 </dd></dl>
@@ -97,8 +84,8 @@ are <em>not</em> passed to the input function.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Name of ui file to load</li>
-<li><strong>parent</strong> (<em>QtCore.QObject</em>) &#8211; Object to use as the parent of this widget</li>
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of ui file to load</li>
+<li><strong>parent</strong> (<em>QtCore.QObject</em>) – Object to use as the parent of this widget</li>
 </ul>
 </td>
 </tr>
@@ -121,16 +108,16 @@ are <em>not</em> passed to the input function.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>prompt</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; string to display at the top of the window</li>
-<li><strong>directory</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; initial directory to save the file to</li>
-<li><strong>filetypes</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; argument for filtering file types separated by ;; (<em>.png) or (Images *.png);;(Other *.</em>)</li>
+<li><strong>prompt</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – string to display at the top of the window</li>
+<li><strong>directory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – initial directory to save the file to</li>
+<li><strong>filetypes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – argument for filtering file types separated by ;; (<em>.png) or (Images *.png);;(Other *.</em>)</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the file path selected, or empty string if canceled</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)">str</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)">str</a></p>
 </td>
 </tr>
 </tbody>
@@ -146,16 +133,16 @@ are <em>not</em> passed to the input function.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>prompt</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; string to display at the top of the window</li>
-<li><strong>directory</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; initial directory to open</li>
-<li><strong>filetypes</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; argument for filtering file types separated by ;; (<em>.png) or (Images *.png);;(Other *.</em>)</li>
+<li><strong>prompt</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – string to display at the top of the window</li>
+<li><strong>directory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – initial directory to open</li>
+<li><strong>filetypes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – argument for filtering file types separated by ;; (<em>.png) or (Images *.png);;(Other *.</em>)</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the file (path+file+extension) selected, or None</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)">str</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)">str</a></p>
 </td>
 </tr>
 </tbody>
@@ -164,7 +151,7 @@ are <em>not</em> passed to the input function.</p>
 
 </div>
 <div class="section" id="submodule-utils-app">
-<h1>Submodule: utils.app<a class="headerlink" href="#submodule-utils-app" title="Permalink to this headline">¶</a></h1>
+<h2>Submodule: utils.app<a class="headerlink" href="#submodule-utils-app" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="flika.utils.app.get_qapp">
 <code class="descclassname">flika.utils.app.</code><code class="descname">get_qapp</code><span class="sig-paren">(</span><em>icon_path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.utils.app.get_qapp" title="Permalink to this definition">¶</a></dt>
@@ -174,7 +161,7 @@ one is created and the standard windoe icon is set to icon_path</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>icon_path</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; location of icon to use as default window icon</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>icon_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – location of icon to use as default window icon</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the current application process</td>
 </tr>
@@ -184,6 +171,7 @@ one is created and the standard windoe icon is set to icon_path</p>
 </table>
 </dd></dl>
 
+</div>
 </div>
 
 
@@ -228,7 +216,7 @@ one is created and the standard windoe icon is set to icon_path</p>
     
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Kyle Ellefsen.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
     </div>
     
 

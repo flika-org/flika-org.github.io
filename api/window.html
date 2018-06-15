@@ -1,30 +1,19 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Module: window &#8212; flika 0.2.21 documentation</title>
-    
+    <title>Module: window &#8212; flika 0.2.25 documentation</title>
     <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.2.21',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -32,8 +21,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
 
-  </head>
-  <body role="document">
+  </head><body>
   
     
     
@@ -48,7 +36,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">flika 0.2.21 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">flika 0.2.25 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -63,56 +51,67 @@
 <dt id="flika.window.Window">
 <em class="property">class </em><code class="descclassname">flika.window.</code><code class="descname">Window</code><span class="sig-paren">(</span><em>tif</em>, <em>name='flika'</em>, <em>filename=''</em>, <em>commands=[]</em>, <em>metadata={}</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window" title="Permalink to this definition">¶</a></dt>
 <dd><p>Window objects are the central objects in flika. Almost all functions in the
-<a class="reference internal" href="process.html#module-flika.process" title="flika.process"><code class="xref py py-mod docutils literal"><span class="pre">process</span></code></a> module are performed on Window objects and
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">process</span></code> module are performed on Window objects and
 output Window objects.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>tif</strong> (<em>numpy.array</em>) &#8211; The image the window will store and display</li>
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The name of the window.</li>
-<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The filename (including full path) of file this window&#8217;s image orinated from.</li>
-<li><strong>commands</strong> (<em>list of str</em>) &#8211; a list of the commands used to create this window, starting with loading the file.</li>
-<li><strong>metadata</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; dict: a dictionary containing the original file&#8217;s metadata.</li>
+<li><strong>tif</strong> (<em>numpy.array</em>) – The image the window will store and display</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the window.</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The filename (including full path) of file this window’s image orinated from.</li>
+<li><strong>commands</strong> (<em>list of str</em>) – a list of the commands used to create this window, starting with loading the file.</li>
+<li><strong>metadata</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – dict: a dictionary containing the original file’s metadata.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="flika.window.Window.closeEvent">
+<code class="descname">closeEvent</code><span class="sig-paren">(</span><em>self</em>, <em>QCloseEvent</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.closeEvent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="flika.window.Window.closed">
 <code class="descname">closed</code><em class="property"> = None</em><a class="headerlink" href="#flika.window.Window.closed" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>bool</em> &#8211; True if the window has been closed, False otherwise.</p>
+<dd><p><em>bool</em> – True if the window has been closed, False otherwise.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="flika.window.Window.commands">
 <code class="descname">commands</code><em class="property"> = None</em><a class="headerlink" href="#flika.window.Window.commands" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list of str</em> &#8211; a list of the commands used to create this window, starting with loading the file.</p>
+<dd><p><em>list of str</em> – a list of the commands used to create this window, starting with loading the file.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="flika.window.Window.currentROI">
 <code class="descname">currentROI</code><em class="property"> = None</em><a class="headerlink" href="#flika.window.Window.currentROI" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference internal" href="roi.html#flika.roi.ROI_Base" title="flika.roi.ROI_Base"><code class="xref py py-class docutils literal"><span class="pre">ROI</span></code></a> &#8211; When an ROI is clicked, it becomes the currentROI of that window and can be accessed via this variable.</p>
+<dd><p><a class="reference internal" href="roi.html#flika.roi.ROI_Base" title="flika.roi.ROI_Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">ROI</span></code></a> – When an ROI is clicked, it becomes the currentROI of that window and can be accessed via this variable.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="flika.window.Window.dtype">
 <code class="descname">dtype</code><em class="property"> = None</em><a class="headerlink" href="#flika.window.Window.dtype" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dtype</em> &#8211; The datatype of the stored image, e.g. <code class="docutils literal"><span class="pre">uint8</span></code>.</p>
+<dd><p><em>dtype</em> – The datatype of the stored image, e.g. <code class="docutils literal notranslate"><span class="pre">uint8</span></code>.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="flika.window.Window.filename">
 <code class="descname">filename</code><em class="property"> = None</em><a class="headerlink" href="#flika.window.Window.filename" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> &#8211; The filename (including full path) of file this window&#8217;s image orinated from.</p>
+<dd><p><em>str</em> – The filename (including full path) of file this window’s image orinated from.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="flika.window.Window.framerate">
+<code class="descname">framerate</code><em class="property"> = None</em><a class="headerlink" href="#flika.window.Window.framerate" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – The number of frames per second (Hz).</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="flika.window.Window.getScatterPts">
-<code class="descname">getScatterPts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.getScatterPts" title="Permalink to this definition">¶</a></dt>
+<code class="descname">getScatterPts</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.getScatterPts" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -127,19 +126,31 @@ output Window objects.</p>
 
 <dl class="method">
 <dt id="flika.window.Window.imageArray">
-<code class="descname">imageArray</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.imageArray" title="Permalink to this definition">¶</a></dt>
-<dd><p>returns image as a 3d array, correcting for color or 2d image</p>
+<code class="descname">imageArray</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.imageArray" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Image as a 3d array, correcting for color or 2d image</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
+<dt id="flika.window.Window.keyPressEvent">
+<code class="descname">keyPressEvent</code><span class="sig-paren">(</span><em>self</em>, <em>QKeyEvent</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.keyPressEvent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="flika.window.Window.link">
-<code class="descname">link</code><span class="sig-paren">(</span><em>win</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.link" title="Permalink to this definition">¶</a></dt>
+<code class="descname">link</code><span class="sig-paren">(</span><em>self</em>, <em>win</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.link" title="Permalink to this definition">¶</a></dt>
 <dd><p>Linking a window to another means when the current index of one changes, the index of the other will automatically change.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>win</strong> (<a class="reference internal" href="#flika.window.Window" title="flika.window.Window"><em>flika.window.Window</em></a>) &#8211; The window that will be linked with this one</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>win</strong> (<a class="reference internal" href="#flika.window.Window" title="flika.window.Window"><em>flika.window.Window</em></a>) – The window that will be linked with this one</td>
 </tr>
 </tbody>
 </table>
@@ -148,54 +159,78 @@ output Window objects.</p>
 <dl class="attribute">
 <dt id="flika.window.Window.metadata">
 <code class="descname">metadata</code><em class="property"> = None</em><a class="headerlink" href="#flika.window.Window.metadata" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dict</em> &#8211; a dictionary containing the original file&#8217;s metadata.</p>
+<dd><p><em>dict</em> – a dictionary containing the original file’s metadata.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="flika.window.Window.mouseClickEvent">
+<code class="descname">mouseClickEvent</code><span class="sig-paren">(</span><em>ev</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.mouseClickEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>‘mouseClickevent(self, ev)
+Event handler for when the mouse is pressed in a flika window.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="flika.window.Window.mouseMoved">
+<code class="descname">mouseMoved</code><span class="sig-paren">(</span><em>self</em>, <em>point</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.mouseMoved" title="Permalink to this definition">¶</a></dt>
+<dd><p>Event handler function for mouse movement.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="flika.window.Window.mousePressEvent">
+<code class="descname">mousePressEvent</code><span class="sig-paren">(</span><em>self</em>, <em>QMouseEvent</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.mousePressEvent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="flika.window.Window.mt">
 <code class="descname">mt</code><em class="property"> = None</em><a class="headerlink" href="#flika.window.Window.mt" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>int</em> &#8211; The number of frames in the image stack.</p>
+<dd><p><em>int</em> – The number of frames in the image stack.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="flika.window.Window.mx">
 <code class="descname">mx</code><em class="property"> = None</em><a class="headerlink" href="#flika.window.Window.mx" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>int</em> &#8211; The number of pixels wide the image is in the x (left to right) dimension.</p>
+<dd><p><em>int</em> – The number of pixels wide the image is in the x (left to right) dimension.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="flika.window.Window.my">
 <code class="descname">my</code><em class="property"> = None</em><a class="headerlink" href="#flika.window.Window.my" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>int</em> &#8211; The number of pixels heigh the image is in the y (up to down) dimension.</p>
+<dd><p><em>int</em> – The number of pixels heigh the image is in the y (up to down) dimension.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="flika.window.Window.name">
 <code class="descname">name</code><em class="property"> = None</em><a class="headerlink" href="#flika.window.Window.name" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> &#8211; The name of the window.</p>
+<dd><p><em>str</em> – The name of the window.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="flika.window.Window.paste">
-<code class="descname">paste</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.paste" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function pastes an ROI from one window into another.
-The ROIs will be linked so that when you alter one of them, the other will be altered in the same way.</p>
+<code class="descname">paste</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.paste" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function pastes a ROI from one window into another.
+The ROIs will be automatically linked using the link() fucntion so that when you alter one of them, the other will be altered in the same way.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="flika.window.Window.resizeEvent">
+<code class="descname">resizeEvent</code><span class="sig-paren">(</span><em>self</em>, <em>QResizeEvent</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.resizeEvent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="flika.window.Window.rois">
 <code class="descname">rois</code><em class="property"> = None</em><a class="headerlink" href="#flika.window.Window.rois" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list of ROIs</em> &#8211; a list of all the <a class="reference internal" href="roi.html#flika.roi.ROI_Base" title="flika.roi.ROI_Base"><code class="xref py py-class docutils literal"><span class="pre">ROIs</span></code></a> inside this window.</p>
+<dd><p><em>list of ROIs</em> – a list of all the <a class="reference internal" href="roi.html#flika.roi.ROI_Base" title="flika.roi.ROI_Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">ROIs</span></code></a> inside this window.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="flika.window.Window.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.save" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<code class="descname">save</code><span class="sig-paren">(</span><em>self</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the current window to a specificed directory as a (.tif) file</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The filename, including the full path, where this (.tif) file will be saved.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The filename, including the full path, where this (.tif) file will be saved.</td>
 </tr>
 </tbody>
 </table>
@@ -203,12 +238,12 @@ The ROIs will be linked so that when you alter one of them, the other will be al
 
 <dl class="method">
 <dt id="flika.window.Window.save_rois">
-<code class="descname">save_rois</code><span class="sig-paren">(</span><em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.save_rois" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save_rois</code><span class="sig-paren">(</span><em>self</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.save_rois" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The filename, including the full path, where the ROI file will be saved.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The filename, including the full path, where the ROI file will be saved.</td>
 </tr>
 </tbody>
 </table>
@@ -216,20 +251,20 @@ The ROIs will be linked so that when you alter one of them, the other will be al
 
 <dl class="method">
 <dt id="flika.window.Window.setAsCurrentWindow">
-<code class="descname">setAsCurrentWindow</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.setAsCurrentWindow" title="Permalink to this definition">¶</a></dt>
+<code class="descname">setAsCurrentWindow</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.setAsCurrentWindow" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function sets this window as the current window. There is only one current window. All operations are performed on the
-current window. The current window can be accessed from the variable <code class="docutils literal"><span class="pre">g.win</span></code>.</p>
+current window. The current window can be accessed from the variable <code class="docutils literal notranslate"><span class="pre">g.win</span></code>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="flika.window.Window.setIndex">
-<code class="descname">setIndex</code><span class="sig-paren">(</span><em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.setIndex" title="Permalink to this definition">¶</a></dt>
+<code class="descname">setIndex</code><span class="sig-paren">(</span><em>self</em>, <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.setIndex" title="Permalink to this definition">¶</a></dt>
 <dd><p>This sets the index (frame) of this window.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>index</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The index of the image this window will display</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>index</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The index of the image this window will display</td>
 </tr>
 </tbody>
 </table>
@@ -237,19 +272,27 @@ current window. The current window can be accessed from the variable <code class
 
 <dl class="method">
 <dt id="flika.window.Window.setName">
-<code class="descname">setName</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.setName" title="Permalink to this definition">¶</a></dt>
-<dd><p>set the name of this window.</p>
+<code class="descname">setName</code><span class="sig-paren">(</span><em>self</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.setName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the name of this window.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – the name for window to be set to</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="flika.window.Window.unlink">
-<code class="descname">unlink</code><span class="sig-paren">(</span><em>win</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.unlink" title="Permalink to this definition">¶</a></dt>
+<code class="descname">unlink</code><span class="sig-paren">(</span><em>self</em>, <em>win</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.window.Window.unlink" title="Permalink to this definition">¶</a></dt>
 <dd><p>This unlinks a window from this one.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>win</strong> (<a class="reference internal" href="#flika.window.Window" title="flika.window.Window"><em>flika.window.Window</em></a>) &#8211; The window that will be unlinked from this one</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>win</strong> (<a class="reference internal" href="#flika.window.Window" title="flika.window.Window"><em>flika.window.Window</em></a>) – The window that will be unlinked from this one</td>
 </tr>
 </tbody>
 </table>
@@ -301,7 +344,7 @@ current window. The current window can be accessed from the variable <code class
     
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Kyle Ellefsen.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
     </div>
     
 

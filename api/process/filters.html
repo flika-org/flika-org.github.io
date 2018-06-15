@@ -1,0 +1,361 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Submodule: filters &#8212; flika 0.2.25 documentation</title>
+    <link rel="stylesheet" href="../../_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+     
+    
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head><body>
+  
+    
+    
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">flika 0.2.25 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-flika.process.filters">
+<span id="submodule-filters"></span><span id="filters"></span><h1>Submodule: filters<a class="headerlink" href="#module-flika.process.filters" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="gaussian-blur">
+<h2>Gaussian_blur<a class="headerlink" href="#gaussian-blur" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="flika.process.filters.Gaussian_blur">
+<em class="property">class </em><code class="descclassname">flika.process.filters.</code><code class="descname">Gaussian_blur</code><a class="headerlink" href="#flika.process.filters.Gaussian_blur" title="Permalink to this definition">¶</a></dt>
+<dd><p>gaussian_blur(sigma, norm_edges=False, keepSourceWindow=False)</p>
+<p>This applies a spatial gaussian_blur to every frame of your stack.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sigma</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The width of the gaussian</li>
+<li><strong>norm_edges</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If true, this reduces the values of the pixels near the edges so they have the same standard deviation as the rest of the image</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">flika.window.Window</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="difference-of-gaussians">
+<h2>Difference_of_Gaussians<a class="headerlink" href="#difference-of-gaussians" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="flika.process.filters.Difference_of_Gaussians">
+<em class="property">class </em><code class="descclassname">flika.process.filters.</code><code class="descname">Difference_of_Gaussians</code><a class="headerlink" href="#flika.process.filters.Difference_of_Gaussians" title="Permalink to this definition">¶</a></dt>
+<dd><p>gaussian_blur(sigma1, sigma2, keepSourceWindow=False)</p>
+<p>This subtracts one gaussian blurred image from another to spatially bandpass filter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sigma1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The width of the first gaussian</li>
+<li><strong>sigma2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The width of the first gaussian</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">flika.window.Window</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="butterworth-filter">
+<h2>Butterworth_filter<a class="headerlink" href="#butterworth-filter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="flika.process.filters.Butterworth_filter">
+<em class="property">class </em><code class="descclassname">flika.process.filters.</code><code class="descname">Butterworth_filter</code><a class="headerlink" href="#flika.process.filters.Butterworth_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>butterworth_filter(filter_order, low, high, framerate, keepSourceWindow=False)</p>
+<p>This filters a stack in time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filter_order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The order of the butterworth filter (higher order -&gt; steeper cutoff).</li>
+<li><strong>low</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The low frequency cutoff.  Must be between 0 and 1 and must be below high.</li>
+<li><strong>high</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The high frequency cutoff.  Must be between 0 and 1 and must be above low.</li>
+<li><strong>framerate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The framerate in Hz. If set to zero, a framerate of 2 Hz will be used, so as to set the Nyquist frequency to 1. Default is 0.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">newWindow</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="mean-filter">
+<h2>Mean_filter<a class="headerlink" href="#mean-filter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="flika.process.filters.Mean_filter">
+<em class="property">class </em><code class="descclassname">flika.process.filters.</code><code class="descname">Mean_filter</code><a class="headerlink" href="#flika.process.filters.Mean_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>mean_filter(nFrames, keepSourceWindow=False)</p>
+<p>This filters a stack in time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nFrames</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of frames to average</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">newWindow</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="variance-filter">
+<h2>Variance_filter<a class="headerlink" href="#variance-filter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="flika.process.filters.Variance_filter">
+<em class="property">class </em><code class="descclassname">flika.process.filters.</code><code class="descname">Variance_filter</code><a class="headerlink" href="#flika.process.filters.Variance_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>variance_filter(nFrames, keepSourceWindow=False)</p>
+<p>This filters a stack in time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nFrames</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of frames to take teh variance of</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">newWindow</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="median-filter">
+<h2>Median_filter<a class="headerlink" href="#median-filter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="flika.process.filters.Median_filter">
+<em class="property">class </em><code class="descclassname">flika.process.filters.</code><code class="descname">Median_filter</code><a class="headerlink" href="#flika.process.filters.Median_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>median_filter(nFrames, keepSourceWindow=False)</p>
+<p>This filters a stack in time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nFrames</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of frames to average.  This must be an odd number</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">newWindow</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="fourier-filter">
+<h2>Fourier_filter<a class="headerlink" href="#fourier-filter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="flika.process.filters.Fourier_filter">
+<em class="property">class </em><code class="descclassname">flika.process.filters.</code><code class="descname">Fourier_filter</code><a class="headerlink" href="#flika.process.filters.Fourier_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>fourier_filter(frame_rate, low, high, loglogPreview, keepSourceWindow=False)</p>
+<p>I’m going to eventually plot the trace in the frequency domain inside this box so you can see where the power is.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>frame_rate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Frame Rate in Hz</li>
+<li><strong>low</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Low cutoff frequency for the fourier filter</li>
+<li><strong>high</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – High cutoff frequency for fourier filter</li>
+<li><strong>loglogPreview</strong> (<em>boolean</em>) – whether or not to plot frequency spectrum on log log axes</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="difference-filter">
+<h2>Difference_filter<a class="headerlink" href="#difference-filter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="flika.process.filters.Difference_filter">
+<em class="property">class </em><code class="descclassname">flika.process.filters.</code><code class="descname">Difference_filter</code><a class="headerlink" href="#flika.process.filters.Difference_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>difference_filter(keepSourceWindow=False)</p>
+<p>Subtracts each frame from the preceeding frame</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">newWindow</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="boxcar-differential-filter">
+<h2>Boxcar_differential_filter<a class="headerlink" href="#boxcar-differential-filter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="flika.process.filters.Boxcar_differential_filter">
+<em class="property">class </em><code class="descclassname">flika.process.filters.</code><code class="descname">Boxcar_differential_filter</code><a class="headerlink" href="#flika.process.filters.Boxcar_differential_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>boxcar_differential_filter(minNframes, maxNframes, keepSourceWindow=False)</p>
+<p>Applies a Boxcar differential filter by comparing each frameat index I to the frames in range [I+minNframes, I+maxNframes]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>minNframes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The starting point of your boxcar window.</li>
+<li><strong>maxNframes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The ending point of your boxcar window.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">newWindow</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="wavelet-filter">
+<h2>Wavelet_filter<a class="headerlink" href="#wavelet-filter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="flika.process.filters.Wavelet_filter">
+<em class="property">class </em><code class="descclassname">flika.process.filters.</code><code class="descname">Wavelet_filter</code><a class="headerlink" href="#flika.process.filters.Wavelet_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>wavelet_filter(low, high, keepSourceWindow=False)</p>
+<p><strong>*Warning!! This function is extremely slow.*</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>low</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The starting point of your boxcar window.</li>
+<li><strong>high</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The ending point of your boxcar window.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">newWindow</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="bilateral-filter">
+<h2>Bilateral_filter<a class="headerlink" href="#bilateral-filter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="flika.process.filters.Bilateral_filter">
+<em class="property">class </em><code class="descclassname">flika.process.filters.</code><code class="descname">Bilateral_filter</code><a class="headerlink" href="#flika.process.filters.Bilateral_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>bilateral_filter( keepSourceWindow=False)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>soft</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – True for guassian, False for hard filter</li>
+<li><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – beta of kernel</li>
+<li><strong>width</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – width of kernel</li>
+<li><strong>stoptol</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – tolerance for convergence</li>
+<li><strong>maxiter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – maximum number of iterations</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">newWindow</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/flika_logo.png" alt="Logo"/>
+            </a></p><h3>About flika</h3>
+<p>
+  flika is an  image processing program for biologists written in Python.
+</p><h3><a href="../../index.html">Table Of Contents</a></h3>
+
+<ul>
+  <li><a href="../../index.html">Home</a></li>
+  <li><a href="../../contents.html">Contents</a></li>
+  <li><a href="../../getting-started.html">Install</a></li>
+  <li><a href="../../example/index.html">Examples</a></li>
+  <li><a href="../../plugins.html">Plugins</a></li>
+  <li><a href="../../contributing.html">Contributing</a></li>
+  <li><a href="../../contact.html">Contact</a></li>
+  <li><a href="../../changelog.html">Changelog</a></li>
+  <li><a href="../../similar_projects.html">Similar Projects</a></li>
+  <li><a href="../../license.html">License</a></li>
+  <li><a href="../../api.html">API Reference</a></li>
+</ul><h3>Useful Links</h3>
+<ul>
+  <li><a href="https://github.com/flika-org/flika">GitHub</a></li>
+  <li><a href="https://pypi.python.org/pypi/flika">PyPI</a></li>
+  <li><a href="https://github.com/flika-org/flika/issues">Issue Tracker</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+
+
+    
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Kyle Ellefsen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+    
+
+<script type="text/javascript">
+
+// Add google analytics here
+
+</script>
+
+  </body>
+</html>

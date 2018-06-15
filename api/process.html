@@ -1,30 +1,19 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Module: process &#8212; flika 0.2.21 documentation</title>
-    
+    <title>Module: process &#8212; flika 0.2.25 documentation</title>
     <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.2.21',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -32,8 +21,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
 
-  </head>
-  <body role="document">
+  </head><body>
   
     
     
@@ -48,7 +36,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">flika 0.2.21 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">flika 0.2.25 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -57,153 +45,104 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-flika.process">
-<span id="module-process"></span><span id="process"></span><h1>Module: process<a class="headerlink" href="#module-flika.process" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-flika.process.BaseProcess">
-<span id="module-process-baseprocess"></span><h2>Module: process.BaseProcess<a class="headerlink" href="#module-flika.process.BaseProcess" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="flika.process.BaseProcess.WindowSelector">
-<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">WindowSelector</code><a class="headerlink" href="#flika.process.BaseProcess.WindowSelector" title="Permalink to this definition">¶</a></dt>
-<dd><p>This widget is a button with a label.  Once you click the button, the widget waits for you to click a Window object.  Once you do, it sets self.window to be the window, and it sets the label to be the widget name.</p>
-<dl class="method">
-<dt id="flika.process.BaseProcess.WindowSelector.setValue">
-<code class="descname">setValue</code><span class="sig-paren">(</span><em>window</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.BaseProcess.WindowSelector.setValue" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function is written to satify the requirement that all items have a setValue function to recall from settings the last set value.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="flika.process.BaseProcess.FileSelector">
-<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">FileSelector</code><span class="sig-paren">(</span><em>filetypes='*.*'</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.BaseProcess.FileSelector" title="Permalink to this definition">¶</a></dt>
-<dd><p>This widget is a button with a label.  Once you click the button, the widget waits for you to select a file to save.  Once you do, it sets self.filename and it sets the label.</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="flika.process.BaseProcess.ColorSelector">
-<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">ColorSelector</code><a class="headerlink" href="#flika.process.BaseProcess.ColorSelector" title="Permalink to this definition">¶</a></dt>
-<dd><p>This widget is a button with a label.  Once you click the button, the widget waits for you to select a color.  Once you do, it sets self.color and it sets the label.</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="flika.process.BaseProcess.SliderLabelOdd">
-<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">SliderLabelOdd</code><a class="headerlink" href="#flika.process.BaseProcess.SliderLabelOdd" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is a modified SliderLabel class that forces the user to only choose odd numbers.</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="flika.process.BaseProcess.CheckBox">
-<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">CheckBox</code><span class="sig-paren">(</span><em>parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.BaseProcess.CheckBox" title="Permalink to this definition">¶</a></dt>
-<dd><p>I overwrote the QCheckBox class so that every graphical element has the method &#8216;setValue&#8217;</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="flika.process.BaseProcess.ComboBox">
-<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">ComboBox</code><span class="sig-paren">(</span><em>parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.BaseProcess.ComboBox" title="Permalink to this definition">¶</a></dt>
-<dd><p>I overwrote the QComboBox class so that every graphical element has the method &#8216;setValue&#8217;</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="flika.process.BaseProcess.BaseProcess">
-<em class="property">class </em><code class="descclassname">flika.process.BaseProcess.</code><code class="descname">BaseProcess</code><a class="headerlink" href="#flika.process.BaseProcess.BaseProcess" title="Permalink to this definition">¶</a></dt>
-<dd><p>Subclass BaseProcess when writing your own process. Why would you want to use BaseProcess?</p>
-</dd></dl>
-
-</div>
-<div class="section" id="module-flika.process.binary">
-<span id="module-process-binary"></span><h2>Module: process.binary<a class="headerlink" href="#module-flika.process.binary" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="flika.process.binary.Threshold">
-<em class="property">class </em><code class="descclassname">flika.process.binary.</code><code class="descname">Threshold</code><a class="headerlink" href="#flika.process.binary.Threshold" title="Permalink to this definition">¶</a></dt>
-<dd><p>###threshold(value, darkBackground=False, keepSourceWindow=False)</p>
-<p>Creates a boolean matrix by applying a threshold</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>Parameters:</dt>
-<dd><div class="first last line-block">
-<div class="line">value (float) &#8211; The threshold to be applied</div>
-<div class="line">darkBackground (bool) &#8211; If this is True, pixels below the threshold will be True</div>
-</div>
-</dd>
-<dt>Returns:</dt>
-<dd>newWindow</dd>
-</dl>
-</div></blockquote>
-</dd></dl>
-
-</div>
-<div class="section" id="module-flika.process.color">
-<span id="module-process-color"></span><h2>Module: process.color<a class="headerlink" href="#module-flika.process.color" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-flika.process.file_">
-<span id="module-process-file"></span><h2>Module: process.file_<a class="headerlink" href="#module-flika.process.file_" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="flika.process.file_.save_file">
-<code class="descclassname">flika.process.file_.</code><code class="descname">save_file</code><span class="sig-paren">(</span><em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.file_.save_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Save the image in the currentWindow to a .tif file.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The image or movie will be saved here.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="flika.process.file_.open_file">
-<code class="descclassname">flika.process.file_.</code><code class="descname">open_file</code><span class="sig-paren">(</span><em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.file_.open_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Opens an image or movie file (.tif, .stk, .nd2) into a newWindow.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<em>|</em>) &#8211; </td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">newWindow</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="flika.process.file_.close">
-<code class="descclassname">flika.process.file_.</code><code class="descname">close</code><span class="sig-paren">(</span><em>windows=None</em><span class="sig-paren">)</span><a class="headerlink" href="#flika.process.file_.close" title="Permalink to this definition">¶</a></dt>
-<dd><p>Will close a window or a set of windows.</p>
-<dl class="docutils">
-<dt>Values for windows:</dt>
-<dd><div class="first last line-block">
-<div class="line">&#8216;all&#8217; (str) &#8211; closes all windows</div>
-<div class="line">windows (list) - closes each window in the list</div>
-<div class="line">(Window) - closes individual window</div>
-<div class="line">(None) - closes current window</div>
-</div>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
-<div class="section" id="module-flika.process.filters">
-<span id="module-process-filters"></span><h2>Module: process.filters<a class="headerlink" href="#module-flika.process.filters" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-flika.process.math_">
-<span id="module-process-math"></span><h2>Module: process.math_<a class="headerlink" href="#module-flika.process.math_" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-flika.process.measure">
-<span id="module-process-measure"></span><h2>Module: process.measure<a class="headerlink" href="#module-flika.process.measure" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-flika.process.overlay">
-<span id="module-process-overlay"></span><h2>Module: process.overlay<a class="headerlink" href="#module-flika.process.overlay" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-flika.process.progress_bar">
-<span id="module-process-progress-bar"></span><h2>Module: process.progress_bar<a class="headerlink" href="#module-flika.process.progress_bar" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-flika.process.roi">
-<span id="module-process-roi"></span><h2>Module: process.roi<a class="headerlink" href="#module-flika.process.roi" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-flika.process.stacks">
-<span id="module-process-stacks"></span><h2>Module: process.stacks<a class="headerlink" href="#module-flika.process.stacks" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="module-process">
+<span id="process"></span><h1>Module: process<a class="headerlink" href="#module-process" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="process/BaseProcess.html">Submodule: BaseProcess</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="process/BaseProcess.html#missingwindowerror">MissingWindowError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/BaseProcess.html#windowselector">WindowSelector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/BaseProcess.html#fileselector">FileSelector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/BaseProcess.html#colorselector">ColorSelector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/BaseProcess.html#sliderlabelodd">SliderLabelOdd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/BaseProcess.html#checkbox">CheckBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/BaseProcess.html#combobox">ComboBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/BaseProcess.html#basedialog">BaseDialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/BaseProcess.html#id1">BaseProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/BaseProcess.html#baseprocess-nopriorwindow">BaseProcess_noPriorWindow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="process/binary.html">Submodule: binary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="process/binary.html#threshold">Threshold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/binary.html#blocksizeslider">BlocksizeSlider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/binary.html#adapative-threshold">Adapative_threshold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/binary.html#canny-edge-detector">Canny_edge_detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/binary.html#logically-combine">Logically_combine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/binary.html#remove-small-blobs">Remove_small_blobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/binary.html#binary-dilation">Binary_Dilation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="process/color.html">Submodule: color</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="process/color.html#split-channels">Split_channels</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="process/file_.html">Submodule: file_</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="process/file_.html#save-file">save_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/file_.html#save-points">save_points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/file_.html#save-movie">save_movie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/file_.html#open-image-sequence">open_image_sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/file_.html#open-file">open_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/file_.html#open-points">open_points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/file_.html#get-permutation-tuple">get_permutation_tuple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/file_.html#close">close</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="process/filters.html">Submodule: filters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="process/filters.html#gaussian-blur">Gaussian_blur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/filters.html#difference-of-gaussians">Difference_of_Gaussians</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/filters.html#butterworth-filter">Butterworth_filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/filters.html#mean-filter">Mean_filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/filters.html#variance-filter">Variance_filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/filters.html#median-filter">Median_filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/filters.html#fourier-filter">Fourier_filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/filters.html#difference-filter">Difference_filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/filters.html#boxcar-differential-filter">Boxcar_differential_filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/filters.html#wavelet-filter">Wavelet_filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/filters.html#bilateral-filter">Bilateral_filter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="process/math_.html">Submodule: math_</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="process/math_.html#subtract">Subtract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/math_.html#subtract-trace">Subtract_trace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/math_.html#divide-trace">Divide_trace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/math_.html#multiply">Multiply</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/math_.html#divide">Divide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/math_.html#power">Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/math_.html#ratio">Ratio</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="process/measure.html">Submodule: measure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="process/measure.html#meausre">Meausre</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="process/overlay.html">Submodule: overlay</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="process/overlay.html#time-stamp">Time_Stamp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/overlay.html#showcheckbox">ShowCheckbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/overlay.html#scale-bar">Scale_Bar</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="process/progress_bar.html">Submodule: progress_bar</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="process/progress_bar.html#processlauncher">ProcessLauncher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/progress_bar.html#progessbar">ProgessBar</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="process/roi.html">Submodule: roi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="process/roi.html#set-value">Set_value</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="process/stacks.html">Submodule: stacks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="process/stacks.html#deinterleave">Deinterleave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/stacks.html#pixel-binning">Pixel_binning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/stacks.html#frame-binning">Frame_binning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/stacks.html#resize">Resize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/stacks.html#trim">Trim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/stacks.html#zproject">ZProject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/stacks.html#image-calculator">Image_calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/stacks.html#concatenate-stacks">Concatenate_stacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process/stacks.html#change-datatype">Change_datatype</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 
@@ -249,7 +188,7 @@
     
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Kyle Ellefsen.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
     </div>
     
 
